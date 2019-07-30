@@ -17,7 +17,7 @@ app.listen(80, () => {
 app.get('/learno', (req, res) => {
     var config = {
       user:              "postgres",
-      database:          "postgres",
+      database:          "learno",
       password:          "postgres",
       host:              "127.0.0.1",
       port:              5432
