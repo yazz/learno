@@ -41,6 +41,16 @@
 .modal__footer {
     bottom: 0;
 }
+.is-scrollLocked {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+.is-momentumScrollable {
+   -webkit-overflow-scrolling: touch;
+}
 </style>
 
 <script>!function(o,l){var r,a,s="createElement",g="getElementsByTagName",b="length",E="style",d="title",y="undefined",k="setAttribute",w="getAttribute",x=null,A="__svgInject",C="--inject-",S=new RegExp(C+"\\d+","g"),I="LOAD_FAIL",t="SVG_NOT_SUPPORTED",L="SVG_INVALID",v=["src","alt","onload","onerror"],j=l[s]("a"),G=typeof SVGRect!=y,f={useCache:!0,copyAttributes:!0,makeIdsUnique:!0},N={clipPath:["clip-path"],"color-profile":x,cursor:x,filter:x,linearGradient:["fill","stroke"],marker:["marker",
@@ -71,10 +81,10 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 
 </head>
 
-<body >
+<body class="is-scrollLocked">
     <div class="modal.open">
         <div class="modal__header">AAA</div>
-        <div class="modal__content">    <div id="app">
+        <div class="modal__content is-momentumScrollable">    <div id="app">
 
             <section  class="hero  is-primary">
               <div class="hero-body">
