@@ -113,7 +113,12 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                 <h1 class="title">
                   Hello World
                 </h1>
-                <p class="subtitle">
+                <div   v-for='table in courses'>
+
+                      {{table.name}}
+
+                </div>
+                                <p class="subtitle">
                   My first website with <strong>{{ message }}</strong>!
                 </p>
               </div>
@@ -169,9 +174,19 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Learno'
+            message: 'Learno',
+            courses: []
         }
     })
+
+    var userAction3 = async () => {
+      const response = await fetch('/get_courses');
+      const myJson = await response.json();
+      app.courses = myJson
+    }
+    userAction3()
+
+
 </script>
 
 </html>
