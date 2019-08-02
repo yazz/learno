@@ -45,3 +45,41 @@ app.get('/learno', (req, res) => {
 
 
 });
+
+
+
+
+
+
+
+app.get('/get_courses', (req, res) => {
+    var config = {
+      user:              "postgres",
+      database:          "learno",
+      password:          "postgres",
+      host:              "127.0.0.1",
+      port:              5432
+    };
+    var dbconnection = new postgresdb.Client(config);
+    dbconnection.connect(function (err) {
+      if (err) {
+          console.log({error: '' + err});
+      } else {
+              useSql = "SELECT name FROM learno_tests;"
+          dbconnection.query(useSql, [], function (err, result) {
+            if (err) {
+                console.log({failed: '' + err});
+            } else {
+                console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.end(JSON.stringify(
+                    result.rows
+                ));
+            };
+          })
+
+      }
+    });
+
+
+});
