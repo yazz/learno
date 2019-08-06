@@ -115,7 +115,7 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                 </h1>
                 <div   v-if='mode == "courses"'  v-for='table in courses'>
 
-                       <div v-on:click='mode="questions"'>{{table.id}} - {{table.name}}</div>
+                       <div v-on:click='mode="questions"; getQuestions(table.id)'>{{table.id}} - {{table.name}}</div>
 
                 </div>
                 <div  v-if='mode == "questions"'   v-on:click='mode="courses"'>Back</div>
@@ -184,6 +184,13 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
             courses: [],
             questions: [],
             mode: "courses"
+        },
+        methods: {
+            getQuestions: async function(courseId) {
+                const response = await fetch('/get_questions/' + courseId);
+                const myJson = await response.json();
+                app.questions = myJson
+            }
         }
     })
 
