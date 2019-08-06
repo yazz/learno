@@ -86,7 +86,13 @@ app.get('/get_courses', (req, res) => {
 
 
 
-app.get('/get_questions', (req, res) => {
+app.get('/get_questions/*', (req, res) => {
+    console.log("req.url: " + req.url)
+    var queryData = req.url;
+    var courseNumber = parseInt(queryData.substring(queryData.lastIndexOf("/") + 1))
+    console.log("Course number: " + courseNumber)
+
+
     var config = {
       user:              "postgres",
       database:          "learno",
@@ -99,7 +105,7 @@ app.get('/get_questions', (req, res) => {
       if (err) {
           console.log({error: '' + err});
       } else {
-              useSql = " select id from learno_questions where fk_exam_id = 343                 ;"
+              useSql = " select id, question from learno_questions where fk_exam_id = " + courseNumber + "                 ;"
           dbconnection.query(useSql, [], function (err, result) {
             if (err) {
                 console.log({failed: '' + err});
