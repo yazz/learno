@@ -113,9 +113,15 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                 <h1 class="title">
                   Hello World
                 </h1>
-                <div   v-for='table in courses'>
+                <div   v-if='mode == "courses"'  v-for='table in courses'>
 
-                       {{table.id}} - {{table.name}}
+                       <div v-on:click='mode="questions"'>{{table.id}} - {{table.name}}</div>
+
+                </div>
+                <div  v-if='mode == "questions"'   v-on:click='mode="courses"'>Back</div>
+                <div   v-if='mode == "questions"'  v-for='table in questions'>
+
+                       {{table.id}} - {{table.question}}
 
                 </div>
                                 <p class="subtitle">
@@ -175,7 +181,9 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
         el: '#app',
         data: {
             message: 'Learno',
-            courses: []
+            courses: [],
+            questions: [],
+            mode: "courses"
         }
     })
 
