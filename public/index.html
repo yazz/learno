@@ -24,18 +24,22 @@
 .modal.open {
    display: block;
 }
-.modal__header,
-.modal__footer {
-    height: 50px;
+.modal__header {
+    height: 100px;
 }
+
+.modal__footer {
+    height: 100px;
+}
+
 .modal__content,
 .modal__footer {
     position: absolute;
     width: 100%;
 }
 .modal__content {
-    bottom: 50px;
-    top: 50px;
+    bottom: 100px;
+    top: 100px;
     overflow-y: auto;
 }
 .modal__footer {
@@ -89,19 +93,27 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 
 <body class="is-scrollLocked">
     <div class="modal.open">
-        <div class="modal__header">Learno</div>
+        <div class="modal__header">
+            <p class="">
+              Learno
+            </p>
+            <nav class="level">
+              <p class="level-item has-text-centered">
+                <a class="link is-info title  is-1">Home</a>
+              </p>
+              <p class="level-item has-text-centered">
+                <a class="link is-info title button is-success">Courses</a>
+              </p>
+              <p class="level-item has-text-centered">
+                <a class="link is-info title  is-1">Questions</a>
+              </p>
+              <p class="level-item has-text-centered">
+                <a class="link is-info title  is-1">Me</a>
+              </p>
+            </nav>
+        </div>
         <div class="modal__content is-momentumScrollable" style="overflow-x: hidden;">
             <div id="app">
-
-            <section  class="hero  is-primary">
-              <div class="hero-body">
-                  <div class="container">
-                    <h1 class="title  is-1">
-                      Courses
-                    </h1>
-                </div>
-              </div>
-            </section>
 
 
 
