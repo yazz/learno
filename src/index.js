@@ -65,7 +65,7 @@ app.get('/get_courses', (req, res) => {
       if (err) {
           console.log({error: '' + err});
       } else {
-              useSql = "SELECT id, name FROM learno_tests;"
+              useSql = "SELECT id, name, description FROM learno_tests;"
           dbconnection.query(useSql, [], function (err, result) {
             if (err) {
                 console.log({failed: '' + err});
