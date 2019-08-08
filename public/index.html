@@ -98,8 +98,12 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
             <div class="container">
                 <div>Learno</div>
 
-                <div v-bind:class='"button is-medium " + ((mode == "home")?"is-dark":"is-light")'>Home</div>
-                <div v-bind:class='"button is-medium " + ((mode == "courses")?"is-dark":"is-light")'>Courses</div>
+                <div v-bind:class='"button is-medium " + ((mode == "home")?"is-dark":"is-light")'
+                     v-on:click='mode = "home"'>Home</div>
+
+                <div    v-on:click='mode = "courses"'
+                        v-bind:class='"button is-medium " + ((mode == "courses")?"is-dark":"is-light")'>Courses</div>
+
                 <div v-bind:class='"button is-medium " + ((mode == "questions")?"is-dark":"is-light")'>Questions</div>
             </div>
         </div>
