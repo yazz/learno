@@ -92,19 +92,19 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 </head>
 
 <body class="is-scrollLocked">
+    <div id="app">
     <div class="modal.open">
         <div class="modal__header">
             <div class="container">
                 <div>Learno</div>
 
-                <div class="button is-medium">Home</div>
-                <div class="button is-medium">Courses</div>
-                <div class="button is-medium">Questions</div>
+                <div v-bind:class='"button is-medium " + ((mode == "home")?"is-dark":"is-light")'>Home</div>
+                <div v-bind:class='"button is-medium " + ((mode == "courses")?"is-dark":"is-light")'>Courses</div>
+                <div v-bind:class='"button is-medium " + ((mode == "questions")?"is-dark":"is-light")'>Questions</div>
             </div>
         </div>
 
         <div class="modal__content is-momentumScrollable" style="overflow-x: hidden;">
-            <div id="app">
 
 
 
