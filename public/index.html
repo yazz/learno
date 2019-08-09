@@ -145,33 +145,30 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                                     <a href="#" class="card-footer-item">Start</a>
                                     <a href="#" class="card-footer-item">Similar</a>
                                     <a href="#" class="card-footer-item">Continue</a>
-                               </footer>
-                           </div>
-                      </div>
+                                </footer>
+                            </div>
+                        </div>
 
 
-                      <div  v-if='mode == "questions"'
-                            v-on:click='mode="courses"'>Back</div>
+                        <div  v-if='mode == "questions"'
+                              v-on:click='mode="courses"'>Back</div>
 
-                          <div  v-if='mode == "questions"'
-                                v-for='table in questions'>
+                        <div  v-if='mode == "questions"'
+                              v-for='table in questions'>
 
                                {{table.id}} - {{table.question}}
 
-                          </div>
+                        </div>
 
-                      </div>
-                  </section>
+                    </div>
+                </section>
 
 
-              </div>
-          </div>
-
-            <div class="modal__footer"></div>
             </div>
         </div>
+
+        <div class="modal__footer"></div>
     </div>
-</div>
 
 </body>
 
