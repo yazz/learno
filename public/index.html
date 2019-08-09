@@ -150,6 +150,10 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                         </div>
 
 
+
+
+
+
                         <div  v-if='mode == "questions"'
                               v-on:click='mode="courses"'>Back</div>
 
@@ -159,6 +163,16 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                                {{table.id}} - {{table.question}}
 
                         </div>
+
+
+
+                        <div    v-if='mode == "home"'
+                                id="components-demo">
+
+                            <button-counter></button-counter>
+                            
+                        </div>
+
 
                     </div>
                 </section>
@@ -173,6 +187,16 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 </body>
 
 <script>
+
+    // Define a new component called button-counter
+    Vue.component('button-counter', {
+      data: function () {
+        return {
+          count: 0
+        }
+      },
+      template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    })
 
     var app = new Vue({
         el: '#app',
