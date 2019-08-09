@@ -93,129 +93,85 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 
 <body class="is-scrollLocked">
     <div id="app">
-    <div class="modal.open">
-        <div class="modal__header">
-            <div class="container">
-                <div>Learno</div>
+        <div class="modal.open">
+            <div class="modal__header">
+                <div class="container">
+                    <div>Learno</div>
 
-                <div v-bind:class='"button is-medium " + ((mode == "home")?"is-dark":"is-light")'
-                     v-on:click='mode = "home"'>Home</div>
+                    <div v-bind:class='"button is-medium " + ((mode == "home")?"is-dark":"is-light")'
+                         v-on:click='mode = "home"'>Home</div>
 
-                <div    v-on:click='mode = "courses"'
-                        v-bind:class='"button is-medium " + ((mode == "courses")?"is-dark":"is-light")'>Courses</div>
+                    <div    v-on:click='mode = "courses"'
+                            v-bind:class='"button is-medium " + ((mode == "courses")?"is-dark":"is-light")'>Courses</div>
 
-                <div    v-on:click='mode = "questions"'
-                        v-bind:class='"button is-medium " + ((mode == "questions")?"is-dark":"is-light")'>Questions</div>
+                    <div    v-on:click='mode = "questions"'
+                            v-bind:class='"button is-medium " + ((mode == "questions")?"is-dark":"is-light")'>Questions</div>
+                </div>
             </div>
-        </div>
 
-        <div class="modal__content is-momentumScrollable" style="overflow-x: hidden;">
-
-
-
-            <section  class="section">
-              <div class="container">
+            <div class="modal__content is-momentumScrollable" style="overflow-x: hidden;">
 
 
 
+                <section  class="section">
+                    <div class="container">
+
+                        <div   v-if='mode == "courses"'  v-for='table in courses'>
 
 
+                            <div class="card" style="margin-bottom: 40px;">
+                                <header class="card-header">
+                                    <p   class="card-header-title"
+                                         v-on:click='mode="questions"; getQuestions(table.id)'>
+
+                                        {{table.name}}
+                                    </p>
+
+                                    <a href="#" class="card-header-icon" aria-   label="more options">
+                                        <span class="icon">
+                                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                        </span>
+                                    </a>
+                                </header>
 
 
+                                <div class="card-content">
+                                    <div class="content">
+                                        {{table.description}}
+                                    </div>
+                                </div>
 
-                <div   v-if='mode == "courses"'  v-for='table in courses'>
-
-
-
-
-                       <div class="card" style="margin-bottom: 40px;">
-                         <header class="card-header">
-                           <p   class="card-header-title"
-                                v-on:click='mode="questions"; getQuestions(table.id)'>
-
-                                    {{table.name}}
-                           </p>
-
-                           <a href="#" class="card-header-icon" aria-label="more options">
-                             <span class="icon">
-                               <i class="fas fa-angle-down" aria-hidden="true"></i>
-                             </span>
-                           </a>
-                         </header>
-                         <div class="card-content">
-                           <div class="content">
-                             {{table.description}}
+                                <footer class="card-footer">
+                                    <a href="#" class="card-footer-item">Start</a>
+                                    <a href="#" class="card-footer-item">Similar</a>
+                                    <a href="#" class="card-footer-item">Continue</a>
+                               </footer>
                            </div>
-                         </div>
-                         <footer class="card-footer">
-                           <a href="#" class="card-footer-item">Start</a>
-                           <a href="#" class="card-footer-item">Similar</a>
-                           <a href="#" class="card-footer-item">Continue</a>
-                         </footer>
-                       </div>
-                </div>
-
-
-
-
-
-
-
-
-                <div  v-if='mode == "questions"'   v-on:click='mode="courses"'>Back</div>
-                <div   v-if='mode == "questions"'  v-for='table in questions'>
-
-                       {{table.id}} - {{table.question}}
-
-                </div>
-                                <p class="subtitle">
-                  My first website with <strong>{{ message }}</strong>!
-                </p>
-              </div>
-            </section>
-
-            <div class="columns">
-              <div class="column">
-                  <div class="card">
-                      <div class="card-content">
-                          <div class="title">
-                              First column
-                          </div>
                       </div>
-                      <div class="card-footer">
-                          <div class="card-footer-item">
-                             <a href="#" class="button">
-                                 <i class="fa fa-car" style="font-size:60px;color:red;"></i>
-                             </a>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="column">
-                Second column
-              </div>
-              <div class="column">
-                Third column
-              </div>
-              <div class="column">
-                Fourth column
-              </div>
 
-              <a class="button  is-large  is-primary  column" >Press me</a>
+
+                      <div  v-if='mode == "questions"'
+                            v-on:click='mode="courses"'>Back</div>
+
+                          <div  v-if='mode == "questions"'
+                                v-for='table in questions'>
+
+                               {{table.id}} - {{table.question}}
+
+                          </div>
+
+                      </div>
+                  </section>
+
+
+              </div>
+          </div>
+
+            <div class="modal__footer"></div>
             </div>
-
-
-
-
-        <div class="newimage" style="width:100px;height:100px;border:1px solid black;">
-            dsffsdfds
         </div>
-
-
-        </div>
-</div>
-        <div class="modal__footer"></div>
     </div>
+</div>
 
 </body>
 
