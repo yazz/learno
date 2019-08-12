@@ -65,7 +65,7 @@ app.get('/get_courses', (req, res) => {
       if (err) {
           console.log({error: '' + err});
       } else {
-              useSql = "SELECT id, name, description FROM learno_tests;"
+              useSql = "SELECT id, name, description,rating FROM learno_tests;"
           dbconnection.query(useSql, [], function (err, result) {
             if (err) {
                 console.log({failed: '' + err});
@@ -83,6 +83,42 @@ app.get('/get_courses', (req, res) => {
 
 
 });
+
+
+
+
+app.get('/get_top_courses', (req, res) => {
+    var config = {
+      user:              "postgres",
+      database:          "learno",
+      password:          "postgres",
+      host:              "127.0.0.1",
+      port:              5432
+    };
+    var dbconnection = new postgresdb.Client(config);
+    dbconnection.connect(function (err) {
+      if (err) {
+          console.log({error: '' + err});
+      } else {
+              useSql = "select id,name, description, rating from learno_tests where rating > 0 order by rating desc limit 10"
+          dbconnection.query(useSql, [], function (err, result) {
+            if (err) {
+                console.log({failed: '' + err});
+            } else {
+                console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.end(JSON.stringify(
+                    result.rows
+                ));
+            };
+          })
+
+      }
+    });
+
+
+});
+
 
 
 

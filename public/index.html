@@ -142,7 +142,11 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                         <div    v-if='mode == "home"'
                                 id="components-demo">
 
+                                <div   v-if='mode == "home"'  v-for='table in top_courses'>
 
+
+                                        <button-counter v-bind:table="table"></button-counter>
+                                </div>
 
                         </div>
 
@@ -174,7 +178,7 @@ var bus = new Vue();
       <p   class="card-header-title"
            v-on:click=' bus.$emit("setAppMode", "questions"); bus.$emit("getQuestions", table.id)'>
 
-          {{table.name}}
+          {{table.name}} - Rating: {{table.rating}}
       </p>
 
       <a href="#" class="card-header-icon" aria-   label="more options">
@@ -205,6 +209,7 @@ props:["table"]
         data: {
             message: 'Learno',
             courses: [],
+            top_courses: [],
             questions: [],
             mode: "courses"
         },
@@ -234,6 +239,14 @@ props:["table"]
     }
     userAction3()
 
+
+
+        var userAction4 = async () => {
+          const response = await fetch('/get_top_courses');
+          const myJson = await response.json();
+          app.top_courses = myJson
+        }
+        userAction4()
 
 </script>
 
