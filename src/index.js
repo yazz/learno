@@ -10,6 +10,14 @@ app.get('/', (req, res) => {
   res.send(fs.readFileSync("public/index.html").toString())
 });
 
+app.get('/course_ids/*', (req, res) => {
+  res.send(fs.readFileSync("public/index.html").toString())
+  console.log("req.url: " + req.url)
+  var queryData = req.url;
+  var courseNumber = parseInt(queryData.substring(queryData.lastIndexOf("/") + 1))
+  console.log("Course number: " + courseNumber)
+});
+
 app.listen(80, () => {
   console.log('Example app listening on port 80!')
 });
