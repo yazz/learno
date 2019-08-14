@@ -19,11 +19,36 @@ app.get('/course_ids/*', (req, res) => {
   console.log("Course number: " + courseNumber)
 
   /*SETUP*/
-  scriptCode = "alert(1);"
-  var pos = qwer.indexOf("/*SETUP*/")
-  var newStaticFileContent = qwer.slice(0, pos)  + scriptCode + qwer.slice( pos)
+  scriptCode = "app.mode = 'questions';"
+  var config = {
+    user:              "postgres",
+    database:          "learno",
+    password:          "postgres",
+    host:              "127.0.0.1",
+    port:              5432
+  };
+  var dbconnection = new postgresdb.Client(config);
+  dbconnection.connect(function (err) {
+    if (err) {
+        console.log({error: '' + err});
+    } else {
+            useSql = " select id, question from learno_questions where fk_exam_id = " + courseNumber + "                 ;"
+        dbconnection.query(useSql, [], function (err, result) {
+          if (err) {
+              console.log({failed: '' + err});
+          } else {
+              console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+              scriptCode += "app.questions = " + JSON.stringify(result.rows,null,2) 
+              var pos = qwer.indexOf("/*SETUP*/")
+              var newStaticFileContent = qwer.slice(0, pos)  + scriptCode + qwer.slice( pos)
 
-  res.send(newStaticFileContent)
+              res.send(newStaticFileContent)
+                    };
+        })
+
+    }
+  });
+
 });
 
 app.listen(80, () => {
