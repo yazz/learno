@@ -223,6 +223,9 @@ props:["table"]
             }
         }
     })
+
+/*SETUP*/
+
     bus.$on('getQuestions', (id) => {
         app.getQuestions(id)
         window.history.pushState("object or string", "Title", "/course_ids/" + id);

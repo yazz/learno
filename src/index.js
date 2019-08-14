@@ -11,11 +11,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/course_ids/*', (req, res) => {
-  res.send(fs.readFileSync("public/index.html").toString())
+    var qwer = fs.readFileSync("public/index.html").toString()
+
   console.log("req.url: " + req.url)
   var queryData = req.url;
   var courseNumber = parseInt(queryData.substring(queryData.lastIndexOf("/") + 1))
   console.log("Course number: " + courseNumber)
+
+  /*SETUP*/
+  scriptCode = "alert(1);"
+  var pos = qwer.indexOf("/*SETUP*/")
+  var newStaticFileContent = qwer.slice(0, pos)  + scriptCode + qwer.slice( pos)
+
+  res.send(newStaticFileContent)
 });
 
 app.listen(80, () => {
