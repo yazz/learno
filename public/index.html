@@ -134,6 +134,18 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                               v-for='questionRecord in questions'>
 
                               <div v-html="questionRecord.question"></div>
+                              *
+                              <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_1"></div>
+                              <div style="margin-left: 40px;" v-html="questionRecord.text_answer_1"></div>
+                              *
+                              <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_2"></div>
+                              <div style="margin-left: 40px;" v-html="questionRecord.text_answer_2"></div>
+                              *
+                              <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_3"></div>
+                              <div style="margin-left: 40px;" v-html="questionRecord.text_answer_3"></div>
+                              *
+                              <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_4"></div>
+                              <div style="margin-left: 40px;" v-html="questionRecord.text_answer_4"></div>
 
                         </div>
 

@@ -32,13 +32,13 @@ app.get('/course_ids/*', (req, res) => {
     if (err) {
         console.log({error: '' + err});
     } else {
-            useSql = " select id, question from learno_questions where fk_exam_id = " + courseNumber + "                 ;"
+            useSql = " select id, question, multiple_answer_1, text_answer_1,multiple_answer_2,text_answer_2,multiple_answer_3,text_answer_3,multiple_answer_4,text_answer_4 from learno_questions where fk_exam_id = " + courseNumber + "                 ;"
         dbconnection.query(useSql, [], function (err, result) {
           if (err) {
               console.log({failed: '' + err});
           } else {
               console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-              scriptCode += "app.questions = " + JSON.stringify(result.rows,null,2) 
+              scriptCode += "app.questions = " + JSON.stringify(result.rows,null,2)
               var pos = qwer.indexOf("/*SETUP*/")
               var newStaticFileContent = qwer.slice(0, pos)  + scriptCode + qwer.slice( pos)
 
@@ -182,7 +182,7 @@ app.get('/get_questions/*', (req, res) => {
       if (err) {
           console.log({error: '' + err});
       } else {
-              useSql = " select id, question from learno_questions where fk_exam_id = " + courseNumber + "                 ;"
+              useSql = " select id, question,multiple_answer_1,text_answer_1,multiple_answer_2,text_answer_2,multiple_answer_3,text_answer_3,multiple_answer_4,text_answer_4 from learno_questions where fk_exam_id = " + courseNumber + "                 ;"
           dbconnection.query(useSql, [], function (err, result) {
             if (err) {
                 console.log({failed: '' + err});
