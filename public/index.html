@@ -131,9 +131,9 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                               v-on:click='mode="courses"'>Back</div>
 
                         <div  v-if='mode == "questions"'
-                              v-for='table in questions'>
+                              v-for='questionRecord in questions'>
 
-                               {{table.id}} - {{table.question}}
+                              <div v-html="questionRecord.question"></div>
 
                         </div>
 
