@@ -127,8 +127,9 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 
 
 
-                        <div  v-if='mode == "questions"'
-                              v-on:click='mode="courses"'>Back</div>
+                        <button  v-if='mode == "questions"'
+                            class="button is-medium is-dark"
+                              v-on:click='mode="courses"'>Back</button>
 
                         <div  v-if='mode == "questions"'
                               v-for='questionRecord in questions'>
