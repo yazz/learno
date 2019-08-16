@@ -141,7 +141,7 @@ app.get('/get_top_courses', (req, res) => {
       if (err) {
           console.log({error: '' + err});
       } else {
-              useSql = "select id,name, description, rating from learno_tests where rating > 0 order by rating desc limit 10"
+              useSql = "select id,name, description, rating from learno_tests where publish='Y' and type='TEST' and rating > 0 and parent_test_id=121 order by rating desc limit 10"
           dbconnection.query(useSql, [], function (err, result) {
             if (err) {
                 console.log({failed: '' + err});
