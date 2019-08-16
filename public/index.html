@@ -124,13 +124,7 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 
 
 
-
-
-
-                        <button  v-if='mode == "questions"'
-                            class="button is-medium is-dark"
-                              v-on:click='mode="courses"'>Back</button>
-
+                      <div  v-if='mode == "questions"'>
                         <div  v-if='mode == "questions"'
                               v-for='questionRecord in questions'>
 
@@ -148,7 +142,8 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
                               <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_4"></div>
                               <div style="margin-left: 40px;" v-html="questionRecord.text_answer_4"></div>
 
-                        </div>
+                          </div>
+                      </div>
 
 
 
