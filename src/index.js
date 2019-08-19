@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
   res.send(fs.readFileSync("public/index.html").toString())
 });
 
+app.get('/2', (req, res) => {
+  res.send(fs.readFileSync("public/index2.html").toString())
+});
+
 app.get('/course_ids/*', (req, res) => {
     var qwer = fs.readFileSync("public/index.html").toString()
 
