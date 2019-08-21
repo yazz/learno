@@ -188,7 +188,7 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 <script>
 
 var socket=null;
-var online=true;
+var online=false;
 function sendToServerViaWebSocket(msg) {
     if (online) {
         if (socket) {
@@ -261,9 +261,6 @@ props:["table"]
                 app.questions = myJson
 
 
-                sendToServerViaWebSocket({
-                        message_type: "browser_asks_server_for_data"
-                        });
             }
         }
     })
@@ -296,6 +293,34 @@ props:["table"]
         }
         userAction4()
 
+
+
+        function setupWebSocket()
+        {
+
+            //console.log('opening web socketio');
+            socket = io();
+            //console.log('opening web socketio');
+            socket.on('socket_connected',function(data){
+                online = true
+                console.log("Connected: " + JSON.stringify(data,null,2));
+
+                sendToServerViaWebSocket({
+                        message_type: "browser_socket_connected"
+                        });
+
+                });
+
+
+
+            socket.on('uploaded_app_as_file_from_server',async function(data) {
+
+                console.log("server responded")
+            });
+        }
+
+
+        setupWebSocket()
 </script>
 
 </html>

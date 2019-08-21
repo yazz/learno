@@ -2,9 +2,15 @@ const express       = require('express')
 const fs            = require('fs')
 const compression   = require('compression')
 const postgresdb    = require('pg')
+var http            = require('http')
+var https           = require('https');
 
 const app = express();
 app.use(compression())
+var socket          = null
+
+var io = null;
+var serverwebsockets                    = [];
 
 app.get('/', (req, res) => {
   res.send(fs.readFileSync("public/index.html").toString())
@@ -54,6 +60,18 @@ app.get('/course_ids/*', (req, res) => {
   });
 
 });
+
+
+function sendOverWebSockets(data) {
+    var ll = serverwebsockets.length;
+    //console.log('send to sockets Count: ' + JSON.stringify(serverwebsockets.length));
+    for (var i =0 ; i < ll; i++ ) {
+        var sock = serverwebsockets[i];
+        sock.emit(data.type,data);
+        //console.log('                    sock ' + i + ': ' + JSON.stringify(sock.readyState));
+    }
+}
+
 
 app.listen(80, () => {
   console.log('Example app listening on port 80!')
