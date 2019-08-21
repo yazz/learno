@@ -4,9 +4,12 @@ const compression   = require('compression')
 const postgresdb    = require('pg')
 var http            = require('http')
 var https           = require('https');
+const { VoyagerServer, gql } = require('@aerogear/voyager-server')
+
 var ip = require('ip');
 
 const app = express();
+
 var socket          = null
 
 var io = null;
@@ -90,8 +93,140 @@ function sendOverWebSockets(data) {
         //console.log('                    sock ' + i + ': ' + JSON.stringify(sock.readyState));
     }
 }
+var pgglobal = {
+  user:              "postgres",
+  database:          "learno",
+  password:          "postgres",
+  host:              "127.0.0.1",
+  port:              5432
+};
+var dbb = new postgresdb.Client(pgglobal);
+
+dbb.connect(function (err) {
+console.log("Connected: " + err)
+})
+
+const typeDefs = gql`
+  type Question {
+      id:ID
+      question: String
+      category: String
+
+  }
+  type Test {
+      id:ID
+      name: String
+      questions: [Question]
+  }
+  type User {
+      id:ID
+      user_name: String
+  }
+  type Query {
+    getQuestions: [Question]
+    getTests: [Test]
+    getTest(id: ID): Test
+    getUsers: [User]
+  }
+`
+
+//Create the resolvers for your schema
+const resolvers = {
+  Query: {
+    getQuestions: (obj, args, context, info) => {
+        return new Promise((resolve, reject) => {
+            //return `Hello world ${args.name}`
+            console.log(123);
+            dbb.query("select id, question,category from learno_questions;", [], function (err, result) {
+              if (err) {
+                  console.log({failed: '' + err});
+                  reject(err)
+              } else {
+                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                  console.log(JSON.stringify(result.rows,null,2))
+                  resolve(result.rows)
+              };
+            })
+        })
+    },
+    getTests: (obj, args, context, info) => {
+        return new Promise((resolve, reject) => {
+            //return `Hello world ${args.name}`
+            console.log(123);
+            dbb.query("select id,name from learno_tests;", [], function (err, result) {
+              if (err) {
+                  console.log({failed: '' + err});
+                  reject(err)
+              } else {
+                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                  console.log(JSON.stringify(result.rows,null,2))
+                  resolve(result.rows)
+              };
+            })
+        })
+    },
+    getTest: (obj, args, context, info) => {
+        return new Promise((resolve, reject) => {
+            //return `Hello world ${args.name}`
+            console.log(123);
+            dbb.query("select id,name from learno_tests where id = " + args.id, [], function (err, result) {
+              if (err) {
+                  console.log({failed: '' + err});
+                  reject(err)
+              } else {
+                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                  console.log(JSON.stringify(result.rows,null,2))
+                  resolve(result.rows[0])
+              };
+            })
+        })
+    },
+    getUsers: (obj, args, context, info) => {
+        return new Promise((resolve, reject) => {
+            //return `Hello world ${args.name}`
+            console.log(123);
+            dbb.query("select id,user_name from yazz_login_details" , [], function (err, result) {
+              if (err) {
+                  console.log({failed: '' + err});
+                  reject(err)
+              } else {
+                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                  console.log(JSON.stringify(result.rows,null,2))
+                  resolve(result.rows)
+              };
+            })
+        })
+    }
+},
+Test: {
+    questions: (obj, args, context, info) => {
+        return new Promise((resolve, reject) => {
+            //return `Hello world ${args.name}`
+            console.log(123);
+            dbb.query("select id, question,category from learno_questions where fk_exam_id = " + obj.id, [], function (err, result) {
+              if (err) {
+                  console.log({failed: '' + err});
+                  reject(err)
+              } else {
+                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                  console.log(JSON.stringify(result.rows,null,2))
+                  resolve(result.rows)
+              };
+            })
+        })
+    }
+}
+
+}
+
+//Initialize the library with your Graphql information
+const apolloserver = VoyagerServer({
+  typeDefs,
+  resolvers
+})
 
 
+apolloserver.applyMiddleware({ app })
 app.listen(80, () => {
   console.log('Example app listening on port 80!')
 });
