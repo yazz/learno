@@ -4,13 +4,32 @@ const compression   = require('compression')
 const postgresdb    = require('pg')
 var http            = require('http')
 var https           = require('https');
+var ip = require('ip');
 
 const app = express();
-app.use(compression())
 var socket          = null
 
 var io = null;
 var serverwebsockets                    = [];
+
+
+var httpServer = http.createServer(app)
+
+app.use(compression())
+
+
+
+httpServer.listen(80, ip.address(), function (err) {
+console.log('trying port: ' + 80 + ' ')
+
+httpServer.once('close', function () {
+})
+httpServer.close()
+httpServer = null;
+})
+
+
+
 
 app.get('/', (req, res) => {
   res.send(fs.readFileSync("public/index.html").toString())
