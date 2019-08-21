@@ -19,14 +19,14 @@ app.use(compression())
 
 
 
-httpServer.listen(80, ip.address(), function (err) {
+/*httpServer.listen(80, ip.address(), function (err) {
 console.log('trying port: ' + 80 + ' ')
 
 httpServer.once('close', function () {
 })
 httpServer.close()
 httpServer = null;
-})
+})*/
 
 
 
