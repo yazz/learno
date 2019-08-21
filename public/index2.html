@@ -194,11 +194,7 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
             mounted: function() {
             },
             methods: {
-                getQuestions: async function(courseId) {
-                    const response = await fetch('/get_questions/' + courseId);
-                    const myJson = await response.json();
-                    app.questions = myJson
-                }
+
             }
         })
 
