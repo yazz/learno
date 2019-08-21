@@ -179,6 +179,19 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
 
 
 
+
+        // Define a new component called button-counter
+        Vue.component('button-counter', {
+          data: function () {
+            return {
+              count: 0
+            }
+          },
+          template:
+    "",
+    props:["table"]
+        })
+
         var app = new Vue({
             el: '#app',
             data: {
@@ -191,15 +204,41 @@ e),e.src=r)):R()},o[e]=n}("SVGInject");"object"==typeof module&&"object"==typeof
             mounted: function() {
             },
             methods: {
-
+                getQuestions: async function(courseId) {
+                    const response = await fetch('/get_questions/' + courseId);
+                    const myJson = await response.json();
+                    app.questions = myJson
+                }
             }
         })
 
     /*SETUP*/
 
+        bus.$on('getQuestions', (id) => {
+            app.getQuestions(id)
+            window.history.pushState("object or string", "Title", "/course_ids/" + id);
+        })
+        bus.$on('setAppMode', (id) => {
+            app.mode=id
+        })
 
 
 
+        var userAction3 = async () => {
+          const response = await fetch('/get_courses');
+          const myJson = await response.json();
+          app.courses = myJson
+        }
+        userAction3()
+
+
+
+            var userAction4 = async () => {
+              const response = await fetch('/get_top_courses');
+              const myJson = await response.json();
+              app.top_courses = myJson
+            }
+            userAction4()
     }
 
     setTimeout(fff,100)
