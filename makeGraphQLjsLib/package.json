@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@aerogear/voyager-client": "^2.6.2",
-    "graphql-tag": "^2.10.1"
+    "graphql-tag": "^2.10.1",
+    "parcel-bundler": "^1.12.3"
   }
 }
