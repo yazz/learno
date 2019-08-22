@@ -1,0 +1,15 @@
+{
+  "name": "zubaiur",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aerogear/voyager-client": "^2.6.2",
+    "graphql-tag": "^2.10.1"
+  }
+}
