@@ -38,6 +38,12 @@ app.get('/', (req, res) => {
   res.send(fs.readFileSync("public/index.html").toString())
 });
 
+
+app.get('/gqljs', (req, res) => {
+  res.send(fs.readFileSync("makeGraphQLjsLib/dist/index.js").toString())
+});
+
+
 app.get('/2', (req, res) => {
   res.send(fs.readFileSync("public/index2.html").toString())
 });

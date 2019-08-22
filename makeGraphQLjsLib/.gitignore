@@ -2,10 +2,12 @@
 !/.gitattributes
 !/.gitignore
 
+/*
 
+/package.json
 
-/src/*
-
+/public
+/public/*/
 
 
 /.DS_Store
