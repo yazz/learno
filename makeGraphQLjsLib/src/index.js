@@ -6,28 +6,30 @@
 
 //window.OfflineClient = OfflineClient
 //window.gql = gql
-alert(1)
-import { createHttpLink } from "apollo-link-http";
-alert(2)
-import { InMemoryCache } from "apollo-cache-inmemory";
-alert(3)
+alert("oo")
+//import { createHttpLink } from "apollo-link-http";
+//alert(2)
+//import { InMemoryCache } from "apollo-cache-inmemory";
+//alert(3)
 
 
-import {ApolloClient} from 'apollo-boost';
-alert(4)
-import gql from "graphql-tag";
-alert(5)
+//import {ApolloClient} from 'apollo-boost';
+//alert(4)
+//import gql from "graphql-tag";
+//alert(5)
 
 // the Apollo cache is set up automatically
+/*
 const client = new ApolloClient({
     link: createHttpLink({ uri: "/graphql" }),
     cache: new InMemoryCache()
 }
 );
-alert(6)
+*/
+//alert(6)
 
 
-
+/*
 client.query(
                 {
                     query: gql `query {
@@ -49,7 +51,7 @@ client.query(
             alert(JSON.stringify(result,null,2))
         }
     );
-
+*/
 
 
 
