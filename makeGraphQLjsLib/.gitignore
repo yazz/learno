@@ -4,10 +4,14 @@
 
 /*
 
-/package.json
+!/package.json
 
-/public
-/public/*/
+!/public
+!/public/*
+
+
+!/src
+!/src/*
 
 
 /.DS_Store
