@@ -4,8 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-      "dev": "parcel  src/index.js",
-      "build": "parcel  build  src/index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@aerogear/voyager-server": "^0.7.1",
@@ -17,9 +16,6 @@
     "socket.io": "^2.2.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zubairq/learno.git"

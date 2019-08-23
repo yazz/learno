@@ -1,0 +1,624 @@
+# Write your query or mutation here
+query q1{
+  getQuestions{
+    id
+    question
+    category
+  }
+}
+
+# Write your query or mutation here
+query q2{
+  getTests{
+    id
+    name
+    questions {
+      id
+      question
+    }
+  }
+}
+
+query q3{
+  getTest(id: 341) {
+    id
+    name
+    questions {
+      id
+      question
+    }
+  }
+}
+
+
+
+query q4{
+  getUsers {
+    id
+    user_name
+  }
+}
+
+
+
+
+
+
+
+select
+    name
+from
+    learno_tests
+
+
+
+select
+    weighting
+from
+    learno_link_question_keyword
+where
+        fk_keyword_id = ____
+    and
+        fk_question_id = ____
+
+
+
+select
+    answer_X
+from
+    learno_link_question_keyword
+where
+    fk_keyword_id = ____
+        and
+    fk_question_id = ____
+
+
+
+select
+    fk_keyword_id
+from
+    learno_link_question_keyword
+ where
+     fk_question_id = ____
+
+
+
+select
+    id
+from
+    learno_questions
+where
+        fk_exam_id = ____
+
+
+
+select
+    count(*)
+from
+    learno_questions
+where
+        fk_exam_id = ____
+    and
+        ((status IS NULL) or (status != 'REJECTED')) ";
+
+
+
+select
+    id
+from
+    learno_questions
+where
+        published_category_question_id = 1
+    and
+        fk_exam_id = ____
+    and
+        published_level_id = ____
+
+
+
+select
+    id
+from
+    learno_questions
+where
+        publish='Y'
+    and
+        fk_exam_id = ____
+    and
+        category = ____
+order by
+    published_category_question_id asc
+
+
+
+select
+    learno_keywords.id
+from
+    learno_keywords,
+    learno_link_question_keyword
+where
+        learno_link_question_keyword.fk_question_id = ____
+    and
+        learno_link_question_keyword.fk_keyword_id = learno_keywords.id
+    and
+        learno_link_question_keyword.answer_" + question.getRealAnswerNumber( (int)answers[answerIndex].answerNumber ) + "='Y'";
+    and
+        ((learno_keywords.url IS NULL) or (learno_keywords.url=''))
+
+
+
+
+select
+    T.id
+from
+    learno_questions T
+where
+        LENGTH(T.category) > 0
+    and
+        fk_exam_id= " + question.getTest().getId()
+    and
+        ((T.published_level_id="+question.getLongPropertyById(LearnoItemQuestion.PROPERTY_PUBLISHED_LEVEL_ID)+")
+    or
+        (T.published_level_id IS NULL))
+    and
+        publish='Y'
+    and
+        T.published_question_id = (select min(published_question_id)
+from
+    learno_questions
+where
+        fk_exam_id= " + question.getTest().getId()
+    and
+        category = T.category
+    and
+        ((T.published_level_id=published_level_id) or (T.published_level_id IS NULL))
+order by
+    T.published_question_id asc
+
+
+
+
+
+
+
+
+
+select
+    T.id
+from
+    learno_questions T
+where
+        LENGTH(T.category)>0 and fk_exam_id= " + question.getTest().getId()
+    and
+        ((T.published_level_id="+question.getLongPropertyById(LearnoItemQuestion.PROPERTY_PUBLISHED_LEVEL_ID)+") or (T.published_level_id IS NULL))
+    and
+        publish='Y'
+    and
+        T.published_question_id = ( select
+                                        min(published_question_id)
+                                    from
+                                        learno_questions
+                                    where
+                                            fk_exam_id= " + question.getTest().getId() + " and category = T.category
+                                        and
+                                            ((T.published_level_id=published_level_id) or (T.published_level_id IS NULL))
+order by
+    T.published_question_id asc
+
+
+
+
+
+
+
+
+categoriesSearch = new YazzDatabaseSearch();
+categoriesSearch.itemType = YazzTypeItem.learnoQuestion;
+categoriesSearch.sql ="select distinct(T.id) from learno_questions T where T.id = (select min(id) from learno_questions where category = T.category and publish='Y' and ((published_level_id=T.published_level_id) or (published_level_id IS NULL))) and fk_exam_id=" + test.getId();
+categoriesSearch.doSearch();
+return categoriesSearch.getSearchResults();
+
+
+
+
+
+levelsSearch.itemType   = YazzTypeItem.learnoLevel;
+levelsSearch.sql              = " select id from learno_levels where fk_test_id="+test.getId()+" order by start_perc asc";
+levelsSearch.doSearch();
+
+
+
+// loop through all of the tests. For each test create the web pages
+//-----------------------------------------------------------------------------
+dbSearch            = new YazzDatabaseSearch();
+dbSearch.sql        = "select id from learno_tests where publish='Y' and type='TEST'";
+if (user != null)
+{
+dbSearch.sql += " and owner_id = "+user.getId();
+
+
+
+
+" select id from learno_levels where fk_test_id="+test.getId();
+
+
+
+long quizId = YazzDatabaseHelper.getFastLongResult("select id from learno_tests where name='"+testName+"'");
+
+
+
+
+
+search.sql = "select id from learno_questions where fk_exam_id="+quizId+" and publish='Y' order by question_id asc";
+
+
+
+databaseSearchCategories.sql              = " select id from learno_questions where fk_exam_id="+test.getId()
++" and publish='Y' and category='"+category+"' and ((published_level_id="+levelId+") or (published_level_id IS NULL))"+
+" order by published_question_id asc";
+databaseSearchCategories.doSearch();
+
+
+
+= " select id from learno_tests ";
+databaseSearch.sql                          += " where (LOWER(name) like '%"+searchString.toLowerCase()+"%' ";
+databaseSearch.sql
++= " or LOWER(description) like '%"+searchString.toLowerCase()+"%' ) ";
+databaseSearch.sql                          += " and learno_tests.publish='Y' and type='TEST' ";
+
+
+
+
+
+
+
+
+databaseSearch.itemType                     = YazzTypeItem.learnoQuestion;
+databaseSearch.sql                          = " select learno_questions.id from learno_questions, learno_tests ";
+databaseSearch.sql                          += " where (LOWER(question) like '%"+searchString.toLowerCase()+"%' ";
+for (int iQuestionIndex = 0; iQuestionIndex < 5 ; iQuestionIndex ++)
+{
+databaseSearch.sql
++= " or LOWER(multiple_answer_"+(iQuestionIndex+1)+") like '%"+searchString.toLowerCase()+"%' ";
+databaseSearch.sql
++= " or LOWER(text_answer_"+(iQuestionIndex+1)+") like '%"+searchString.toLowerCase()+"%' ";
+}
+databaseSearch.sql                          += " )";
+databaseSearch.sql                          += " and (learno_tests.publish='Y' and ";
+databaseSearch.sql                          += " learno_tests.id = learno_questions.fk_exam_id and ";
+if (testId!=-1)
+databaseSearch.sql                          += " (learno_tests.id = "+testId+") and ";
+databaseSearch.sql                          += " learno_questions.publish='Y')";
+databaseSearch.doSearch();
+
+
+
+
+
+
+select
+    learno_questions.id
+from
+    learno_questions, learno_tests
+where
+        (LOWER(question) like '%____.toLowerCase()+"%'
+        for (int iQuestionIndex = 0; iQuestionIndex < 5 ; iQuestionIndex ++)
+        {
+            or LOWER(multiple_answer_"+(iQuestionIndex+1)+") like '%"+word.toLowerCase()+"%
+            or LOWER(text_answer_"+(iQuestionIndex+1)+") like '%"+word.toLowerCase()+"%
+        }
+        )
+    and
+        (learno_tests.publish='Y' and
+        learno_tests.id = learno_questions.fk_exam_id and
+        if (testId!=-1)
+            (learno_tests.id = "+testId+") and
+            learno_questions.publish='Y')
+
+
+
+
+
+
+select
+    distinct(learno_questions.id)
+from
+    learno_keywords,
+    learno_questions,
+    learno_link_question_keyword
+where
+        (LOWER(keyword) like '%"+searchString.toLowerCase()+"%'
+    or
+        LOWER(description) like '%"+searchString.toLowerCase()+"%' )
+    and
+        learno_keywords.id = learno_link_question_keyword.fk_keyword_id
+    and
+        learno_questions.id = learno_link_question_keyword.fk_question_id
+    if (testId!=-1)
+    and
+        learno_questions.fk_exam_id = ____
+
+
+
+
+
+
+
+select
+    weighting
+from
+    learno_keywords,
+    learno_questions,
+    learno_link_question_keyword
+where
+        (LOWER(keyword) like '%____.toLowerCase()+"%'
+    or
+        LOWER(description) like '%____.toLowerCase()+"%' )
+    and
+        learno_keywords.id = learno_link_question_keyword.fk_keyword_id
+    and
+        ____ = learno_link_question_keyword.fk_question_id
+
+
+
+
+select
+    distinct( fk_question_id )
+from
+    learno_link_question_keyword
+where
+    fk_keyword_id = ____
+
+
+
+
+
+
+select
+    weighting
+from
+    learno_link_question_keyword
+where
+        fk_keyword_id  =  ____
+    and ____ = learno_link_question_keyword.fk_question_id
+
+
+
+
+
+databaseSearch.sql                          = " select distinct(fk_question_id) from learno_link_question_keyword ,learno_questions ";
+databaseSearch.sql                          += " where learno_questions.publish='Y' and (fk_keyword_id = "+keywordId +
+" and fk_question_id=learno_questions.id) " +
+"  ";
+databaseSearch.doSearch();
+
+
+
+
+select
+    weighting
+from
+    learno_link_question_keyword
+where
+        fk_keyword_id = ____
+    and
+        ____ = learno_link_question_keyword.fk_question_id
+
+
+
+
+
+
+
+select
+    learno_contributions.id
+from
+    learno_contributions,
+    learno_questions
+where
+    learno_contributions.fk_question_id = learno_questions.id
+and
+    learno_questions.owner_id = ______
+and
+    learno_contributions.created_timestamp > (SELECT SYSDATE - ("+(1+hour)+"/24) FROM dual)
+
+
+
+
+
+
+
+
+select
+    MAX(id)
+from
+    learno_saves
+where
+    fk_user_id = ____ and fk_test_id = ____
+
+
+
+select
+    count(*)
+from
+    learno_scores,
+    learno_questions
+where
+        fk_question_id = learno_questions.id
+    and
+        fk_question_id = ____ and fk_user_id = ____
+
+
+
+
+
+select
+    real_answer_chosen
+from
+    learno_scores,
+    learno_questions
+where
+        learno_scores.fk_question_id = learno_questions.id
+    and
+        fk_question_id = ____
+    and
+        fk_user_id = ____
+
+
+
+//
+// If returns > 1 then the question has been answered
+//
+select
+    count(*)
+from
+    learno_scores,
+    learno_questions
+where
+        learno_scores.fk_question_id = learno_questions.id
+    and
+        fk_question_id = ____
+    and
+        fk_user_id = ____
+
+
+
+
+insert into
+    learno_scores
+    (
+        real_answer_chosen ,
+        fk_question_id,
+        fk_user_id,
+        fk_test_id
+    )
+values
+    (
+        question.getRealAnswerNumber(answerChosen),
+        question.getId(),
+        loggedInUserId,
+        test.getId()
+    );
+
+
+
+
+
+
+
+                                              search.sql = " select id from learno_questions where fk_exam_id="+questionInput.getTest().getId()+" and publish='Y' and category='" + category +
+                                                           "' and ((published_level_id="+levelId+") or (published_level_id IS NULL))" +
+                                                           " order by published_category_question_id asc";
+                                          }
+                                          else
+                                          {
+                                              search.sql = "select id from learno_questions where fk_exam_id="+questionInput.getTest().getId()+" and publish='Y' order by published_question_id asc";
+                                          }
+
+
+
+
+                                          search.itemType = YazzTypeItem.learnoQuestion;
+                                          search.sql = "select id from learno_questions where fk_exam_id="+quizId+" and publish='Y' order by question_id asc";
+                                          search.doSearch();
+                                          YazzListItemHandles list = se
+
+
+
+select
+    min(question_id)
+from
+    learno_questions
+where
+    fk_exam_id = ____ and publish='Y'"
+
+
+select
+    id
+from
+    learno_questions
+where
+    fk_exam_id = ____ and publish='Y' and question_id = ____
+
+
+
+
+select
+    distinct(learno_keywords.id)
+from
+    learno_keywords,
+    learno_questions,
+    learno_link_question_keyword
+where
+         (
+            LOWER(keyword) like '%____%'
+         or
+             LOWER(description) like '%____%'
+         )
+     and
+         learno_keywords.id = learno_link_question_keyword.fk_keyword_id
+     and
+         learno_questions.id = learno_link_question_keyword.fk_question_id ";
+     and
+         learno_questions.fk_exam_id = ____
+
+
+
+select
+    learno_contributions.id
+from
+    learno_contributions,
+    learno_questions
+where
+        learno_contributions.FK_QUESTION_ID = learno_questions.ID
+    and
+        owner_id = ____
+    and
+        learno_contributions.status = 'SUBMITTED'
+order by
+    id desc
+
+
+
+
+
+select id from learno_tests where publish='Y' and type='TEST'  and parent_test_id=121
+
+
+
+
+"select count(*) from learno_questions , learno_tests where learno_tests.id = "+
+test.getId()+
+" and fk_exam_id = learno_tests.id and learno_questions.publish='Y'"
+
+
+select id from learno_tests where publish='Y' and type='FOLDER'
+
+
+
+ "select id from learno_tests where publish='Y' and type='TEST' and parent_test_id="+folder.getId();
+
+
+
+ "select count(*) from learno_questions , learno_tests where learno_tests.id = "+
+ test.getId()+
+ " and fk_exam_id = learno_tests.id and learno_questions.publish='Y'"
+ )+")</a></font>";
+
+
+
+select count(*) from learno_questions , learno_tests where learno_tests.id = "+
+ test.getId()+
+ and fk_exam_id = learno_tests.id and learno_questions.publish='Y'")+")
+
+
+
+
+SELECT
+    id
+FROM
+    (select learno_questions.id from learno_questions, learno_tests where learno_questions.publish='Y' and learno_tests.publish='Y' and learno_questions.fk_exam_id=learno_tests.id "+
+     " order by learno_questions.last_updated_timestamp desc ) where ROWNUM <= "+numberOfQuestions;
+
+select id from learno_tests "+
+where owner_id = " + loggedInUser.getId();

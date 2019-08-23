@@ -2,9 +2,10 @@ import gql from 'graphql-tag';
 
 import { OfflineClient } from '@aerogear/voyager-client';
 
-import { ApolloClient, createNetworkInterface } from 'apollo-client'
-import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
-
+console.log(OfflineClient)
+//import { ApolloClient, createNetworkInterface } from 'apollo-client'
+//import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
+/*
 var networkInterface = createNetworkInterface({
   uri: 'http://127.0.0.1:80/graphql',
 })
@@ -14,7 +15,7 @@ import {
   strategies
 } from '@aerogear/datasync-js';
 
-console.log(OfflineClient)
+
 
 window.OfflineClient = OfflineClient
 window.gql = gql
@@ -53,3 +54,4 @@ const client = new ApolloClient({
     }
   }
 })
+*/
