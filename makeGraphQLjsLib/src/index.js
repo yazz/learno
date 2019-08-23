@@ -37,7 +37,10 @@ client.query(
                 }
             )
 .then(
-        result => console.log(result)
+        result => {
+            console.log(result)
+            alert(JSON.stringify(result,null,2))
+        }
     );
 
 
