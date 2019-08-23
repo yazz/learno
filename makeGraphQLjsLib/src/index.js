@@ -1,10 +1,49 @@
-import gql from 'graphql-tag';
+//import gql from 'graphql-tag';
 
-import { OfflineClient } from '@aerogear/voyager-client';
+//import { OfflineClient } from '@aerogear/voyager-client';
 
-console.log(OfflineClient)
-//import { ApolloClient, createNetworkInterface } from 'apollo-client'
-//import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
+//console.log(OfflineClient)
+
+//window.OfflineClient = OfflineClient
+//window.gql = gql
+import { createHttpLink } from "apollo-link-http";
+import { InMemoryCache } from "apollo-cache-inmemory";
+
+
+import {ApolloClient} from 'apollo-boost';
+import gql from "graphql-tag";
+
+// the Apollo cache is set up automatically
+const client = new ApolloClient({
+    link: createHttpLink({ uri: "/graphql" }),
+    cache: new InMemoryCache()
+}
+);
+
+
+
+client.query(
+                {
+                    query: gql `query {
+                                    getTest( id: 341 ) {
+                                        id
+                                        name
+                                        questions {
+                                          id
+                                          question
+                                        }
+                                    }
+                                }`
+                }
+            )
+.then(
+        result => console.log(result)
+    );
+
+
+
+
+//import { ApolloClient, createNetworkInterface } from 'apollo-client//import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
 /*
 var networkInterface = createNetworkInterface({
   uri: 'http://127.0.0.1:80/graphql',
