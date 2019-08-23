@@ -6,12 +6,17 @@
 
 //window.OfflineClient = OfflineClient
 //window.gql = gql
+alert(1)
 import { createHttpLink } from "apollo-link-http";
+alert(2)
 import { InMemoryCache } from "apollo-cache-inmemory";
+alert(3)
 
 
 import {ApolloClient} from 'apollo-boost';
+alert(4)
 import gql from "graphql-tag";
+alert(5)
 
 // the Apollo cache is set up automatically
 const client = new ApolloClient({
@@ -19,6 +24,7 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 }
 );
+alert(6)
 
 
 
@@ -38,6 +44,7 @@ client.query(
             )
 .then(
         result => {
+            alert(7)
             console.log(result)
             alert(JSON.stringify(result,null,2))
         }
