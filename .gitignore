@@ -1,11 +1,13 @@
 
 
 .DS_Store
+/makeGraphQLjsLib/.cache
+/makeGraphQLjsLib/dist
+/makeGraphQLjsLib/.babelrc~
 
-!/makeGraphQLjsLib
-!/makeGraphQLjsLib/*
-!/makeGraphQLjsLib/.gitignore
+
+!/makeGraphQLjsLib/
 !/makeGraphQLjsLib/.babelrc
-
+!/makeGraphQLjsLib/src
 
 node_modules/
