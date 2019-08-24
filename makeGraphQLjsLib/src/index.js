@@ -30,10 +30,10 @@ const client = new ApolloClient({
 }
 );
 
-//alert(6)
+alert(6)
 
 
-/*
+
 client.query(
                 {
                     query: gql `query {
@@ -55,7 +55,7 @@ client.query(
             alert(JSON.stringify(result,null,2))
         }
     );
-*/
+
 
 
 
