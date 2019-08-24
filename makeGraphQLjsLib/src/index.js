@@ -6,7 +6,7 @@
 
 //window.OfflineClient = OfflineClient
 //window.gql = gql
-alert("oo")
+alert("oo2")
 import { createHttpLink } from "apollo-link-http";
 alert(2)
 //import { InMemoryCache } from "apollo-cache-inmemory";
