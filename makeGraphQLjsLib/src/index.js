@@ -39,11 +39,6 @@ client.query(
                     query: gql `query {
                                     getTest( id: 341 ) {
                                         id
-                                        name
-                                        questions {
-                                          id
-                                          question
-                                        }
                                     }
                                 }`
                 }
