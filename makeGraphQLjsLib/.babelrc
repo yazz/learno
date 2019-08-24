@@ -2,4 +2,12 @@
     "main": "src/index.js"
     ,
     "source": true
+    ,
+    "presets": [
+      ["env", {
+        "targets": {
+          "node": true
+        }
+      }]
+    ]
 }
