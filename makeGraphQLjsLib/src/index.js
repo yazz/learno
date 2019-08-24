@@ -25,24 +25,21 @@ const client = new ApolloClient({
 }
 );
 
-alert("GraphQL")
+alert("GraphQL 2")
 
 
 
 client.query(
                 {
                     query: gql `query {
-                        getQuestions{
-                          id
-                          question
-                          category
-                        }
+                                    getTest( id: 341 ) {
+                                        id
+                                    }
                                 }`
                 }
             )
 .then(
         result => {
-            alert(7)
             console.log(result)
             alert(JSON.stringify(result,null,2))
         }

@@ -114,24 +114,24 @@ console.log("Connected: " + err)
 
 const typeDefs = gql`
   type Question {
-      id:ID
+      id:Int
       question: String
       category: String
 
   }
   type Test {
-      id:ID
+      id:Int
       name: String
       questions: [Question]
   }
   type User {
-      id:ID
+      id: Int
       user_name: String
   }
   type Query {
     getQuestions: [Question]
     getTests: [Test]
-    getTest(id: ID): Test
+    getTest(id: Int): Test
     getUsers: [User]
   }
 `
