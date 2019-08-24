@@ -6,8 +6,8 @@
 
 //window.OfflineClient = OfflineClient
 //window.gql = gql
-alert("oo4")
-//import { createHttpLink } from "apollo-link-http";
+alert("oo5")
+import { createHttpLink } from "apollo-link-http";
 var double = input => {
                         return input * 2
                 }
