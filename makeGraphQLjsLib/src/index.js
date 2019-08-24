@@ -8,7 +8,10 @@
 //window.gql = gql
 alert("oo3")
 //import { createHttpLink } from "apollo-link-http";
-alert(2)
+var double = input => {
+                        return input * 2
+                }
+alert(double(2))
 //import { InMemoryCache } from "apollo-cache-inmemory";
 //alert(3)
 
