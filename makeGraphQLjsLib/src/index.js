@@ -32,9 +32,11 @@ alert("GraphQL")
 client.query(
                 {
                     query: gql `query {
-                                    getTest( id: 341 ) {
-                                        id
-                                    }
+                        getQuestions{
+                          id
+                          question
+                          category
+                        }
                                 }`
                 }
             )
