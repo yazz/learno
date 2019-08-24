@@ -5,6 +5,7 @@
 /makeGraphQLjsLib/dist
 /makeGraphQLjsLib/.babelrc~
 
+!/makeGraphQLjsLib/dist/index.js
 
 !/makeGraphQLjsLib/
 !/makeGraphQLjsLib/.babelrc
