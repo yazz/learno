@@ -6,21 +6,16 @@
 
 //window.OfflineClient = OfflineClient
 //window.gql = gql
-alert("oo8")
 import "@babel/polyfill";
 import { createHttpLink } from "apollo-link-http";
 var double = input => {
                         return input * 2
                 }
-alert(double(2))
 import { InMemoryCache } from "apollo-cache-inmemory";
-alert(3)
 
 
 import {ApolloClient} from 'apollo-boost';
-alert(4)
 import gql from "graphql-tag";
-alert(5)
 
 // the Apollo cache is set up automatically
 
@@ -30,7 +25,7 @@ const client = new ApolloClient({
 }
 );
 
-alert(6)
+alert("GraphQL")
 
 
 
