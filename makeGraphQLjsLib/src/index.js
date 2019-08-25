@@ -1,4 +1,4 @@
-alert("GraphQL Commodore Elite")
+alert("GraphQL Infocom")
 
 //import gql from 'graphql-tag';
 
@@ -14,7 +14,7 @@ var double = input => {
                         return input * 2
                 }
 import { InMemoryCache } from "apollo-cache-inmemory";
-//import { Hermes } from 'apollo-cache-hermes';
+import { Hermes } from 'apollo-cache-hermes';
 
 //import {ApolloClient} from 'apollo-boost';
 //import gql from "graphql-tag";
