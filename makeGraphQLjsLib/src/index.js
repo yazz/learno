@@ -1,4 +1,4 @@
-alert("GraphQL C64")
+alert("GraphQL C16")
 
 //import gql from 'graphql-tag';
 
@@ -31,13 +31,14 @@ const defaultOptions = {
       },
     }
 
+/*
 const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
     cache:          new Hermes()
     //defaultOptions: defaultOptions
 }
 );
-
+*/
 
 
 /*
