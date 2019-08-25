@@ -1,4 +1,4 @@
-alert("GraphQL Trinity")
+alert("GraphQL Zork1")
 
 //import gql from 'graphql-tag';
 
@@ -21,11 +21,11 @@ import gql from "graphql-tag";
 // the Apollo cache is set up automatically
 const defaultOptions = {
       watchQuery: {
-        fetchPolicy: 'network-only',
+        fetchPolicy: 'no-cache',
         errorPolicy: 'ignore',
       },
       query: {
-        fetchPolicy: 'network-only',
+        fetchPolicy: 'no-cache',
         errorPolicy: 'all',
       },
     }
