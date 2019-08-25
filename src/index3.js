@@ -1,4 +1,4 @@
-alert("GraphQL Zork2")
+//alert("GraphQL Zork2")
 
 //import gql from 'graphql-tag';
 
@@ -30,7 +30,7 @@ request(
 .then(
         result => {
             console.log(result)
-            alert(JSON.stringify(result,null,2))
+            //alert(JSON.stringify(result,null,2))
         }
     );
 
