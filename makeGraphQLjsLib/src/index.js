@@ -1,4 +1,4 @@
-alert("GraphQL A Mind Forever Voyaging")
+alert("GraphQL ballyhoo")
 
 //import gql from 'graphql-tag';
 
@@ -15,11 +15,10 @@ var double = input => {
                 }
 import { InMemoryCache } from "apollo-cache-inmemory";
 
-//import {ApolloClient} from 'apollo-boost';
-//import gql from "graphql-tag";
+import {ApolloClient} from 'apollo-boost';
+import gql from "graphql-tag";
 
 // the Apollo cache is set up automatically
-/*
 const defaultOptions = {
       watchQuery: {
         fetchPolicy: 'network-only',
@@ -30,15 +29,12 @@ const defaultOptions = {
         errorPolicy: 'all',
       },
     }
-*/
-/*
 const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
-    cache:          new Hermes()
-    //defaultOptions: defaultOptions
+    cache:          new InMemoryCache(),
+    defaultOptions: defaultOptions
 }
 );
-*/
 
 
 /*
