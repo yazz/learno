@@ -1,4 +1,4 @@
-alert("GraphQL ballyhoo")
+alert("GraphQL Trinity")
 
 //import gql from 'graphql-tag';
 
@@ -37,7 +37,7 @@ const client = new ApolloClient({
 );
 
 
-/*
+
 client.query(
                 {
                     query: gql `query {
@@ -51,10 +51,10 @@ client.query(
 .then(
         result => {
             //console.log(result)
-            alert(JSON.stringify(result,null,2))
+            //alert(JSON.stringify(result,null,2))
         }
     );
-*/
+
 
 
 
