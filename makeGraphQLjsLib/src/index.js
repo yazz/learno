@@ -31,14 +31,12 @@ const defaultOptions = {
 
 const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
-    cache:          new Hermes(),
-    defaultOptions: defaultOptions,
-    ssrMode:        true,
-    assumeImmutableResults: true
+    cache:          new Hermes()
+    //defaultOptions: defaultOptions
 }
 );
 
-alert("GraphQL CP/M")
+alert("GraphQL SGI")
 
 
 
