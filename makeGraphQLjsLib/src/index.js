@@ -1,4 +1,4 @@
-alert("GraphQL Commodore Vic 20")
+alert("GraphQL Commodore Elite")
 
 //import gql from 'graphql-tag';
 
@@ -13,7 +13,7 @@ import { createHttpLink } from "apollo-link-http";
 var double = input => {
                         return input * 2
                 }
-//import { InMemoryCache } from "apollo-cache-inmemory";
+import { InMemoryCache } from "apollo-cache-inmemory";
 //import { Hermes } from 'apollo-cache-hermes';
 
 //import {ApolloClient} from 'apollo-boost';
