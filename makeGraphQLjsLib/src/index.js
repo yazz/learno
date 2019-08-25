@@ -18,10 +18,21 @@ import {ApolloClient} from 'apollo-boost';
 import gql from "graphql-tag";
 
 // the Apollo cache is set up automatically
+const defaultOptions = {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'ignore',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    }
 
 const client = new ApolloClient({
-    link: createHttpLink({ uri: "/graphql" }),
-    cache: new InMemoryCache()
+    link:           createHttpLink({ uri: "/graphql" }),
+    cache:          new InMemoryCache(),
+    defaultOptions: defaultOptions,
 }
 );
 
