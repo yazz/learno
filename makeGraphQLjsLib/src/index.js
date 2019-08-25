@@ -20,11 +20,11 @@ import gql from "graphql-tag";
 // the Apollo cache is set up automatically
 const defaultOptions = {
       watchQuery: {
-        fetchPolicy: 'no-cache',
+        fetchPolicy: 'network-only',
         errorPolicy: 'ignore',
       },
       query: {
-        fetchPolicy: 'no-cache',
+        fetchPolicy: 'network-only',
         errorPolicy: 'all',
       },
     }
@@ -36,7 +36,7 @@ const client = new ApolloClient({
 }
 );
 
-alert("GraphQL 3.x")
+alert("GraphQL 4.x")
 
 
 
