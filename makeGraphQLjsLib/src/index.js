@@ -1,3 +1,5 @@
+alert("GraphQL Irix")
+
 //import gql from 'graphql-tag';
 
 //import { OfflineClient } from '@aerogear/voyager-client';
@@ -36,7 +38,6 @@ const client = new ApolloClient({
 }
 );
 
-alert("GraphQL SGI")
 
 
 
@@ -52,7 +53,7 @@ client.query(
             )
 .then(
         result => {
-            console.log(result)
+            //console.log(result)
             alert(JSON.stringify(result,null,2))
         }
     );
