@@ -32,7 +32,7 @@ httpServer = null;
 })*/
 
 
-
+app.use(express.static('dist'))
 
 app.get('/', (req, res) => {
   res.send(fs.readFileSync("public/index.html").toString())
@@ -45,7 +45,7 @@ app.get('/gqljs', (req, res) => {
 
 
 app.get('/2', (req, res) => {
-  res.send(fs.readFileSync("public/index2.html").toString())
+  res.send(fs.readFileSync("dist/index3.html").toString())
 });
 
 app.get('/course_ids/*', (req, res) => {

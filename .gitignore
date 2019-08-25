@@ -12,3 +12,8 @@
 !/makeGraphQLjsLib/src
 
 node_modules/
+
+/.cache
+
+
+/dist
