@@ -1,4 +1,4 @@
-alert("GraphQL Irix")
+alert("GraphQL C64")
 
 //import gql from 'graphql-tag';
 
@@ -40,7 +40,7 @@ const client = new ApolloClient({
 
 
 
-
+/*
 client.query(
                 {
                     query: gql `query {
@@ -57,7 +57,7 @@ client.query(
             alert(JSON.stringify(result,null,2))
         }
     );
-
+*/
 
 
 
