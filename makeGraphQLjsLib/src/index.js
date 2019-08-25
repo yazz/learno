@@ -31,13 +31,15 @@ const defaultOptions = {
 
 const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
-    cache:          new InMemoryCache(),
+    cache:          new InMemoryCache({
+        dataIdFromObject: object => object.key || null
+    }),
     defaultOptions: defaultOptions,
     ssrMode:        true
 }
 );
 
-alert("GraphQL 5.x")
+alert("GraphQL 7.x")
 
 
 
@@ -47,7 +49,8 @@ client.query(
                                     getTest( id: 341 ) {
                                         id
                                     }
-                                }`
+                                }
+                                `
                 }
             )
 .then(
