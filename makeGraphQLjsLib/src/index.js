@@ -32,14 +32,15 @@ const defaultOptions = {
 const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
     cache:          new InMemoryCache({
-        dataIdFromObject: object => object.key || null
+                            resultCaching: false,
+                            freezeResults: true
     }),
     defaultOptions: defaultOptions,
     ssrMode:        true
 }
 );
 
-alert("GraphQL 7.x")
+alert("GraphQL Win 95 ")
 
 
 
