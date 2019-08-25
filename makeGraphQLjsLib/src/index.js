@@ -1,4 +1,4 @@
-alert("GraphQL Zork1")
+alert("GraphQL Zork2")
 
 //import gql from 'graphql-tag';
 
@@ -9,49 +9,28 @@ alert("GraphQL Zork1")
 //window.OfflineClient = OfflineClient
 //window.gql = gql
 import "@babel/polyfill";
-import { createHttpLink } from "apollo-link-http";
+import { request } from "graphql-request";
 var double = input => {
                         return input * 2
                 }
-import { InMemoryCache } from "apollo-cache-inmemory";
-
-import {ApolloClient} from 'apollo-boost';
-import gql from "graphql-tag";
-
-// the Apollo cache is set up automatically
-const defaultOptions = {
-      watchQuery: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'ignore',
-      },
-      query: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'all',
-      },
-    }
-const client = new ApolloClient({
-    link:           createHttpLink({ uri: "/graphql" }),
-    cache:          new InMemoryCache(),
-    defaultOptions: defaultOptions
-}
-);
 
 
 
-client.query(
-                {
-                    query: gql `query {
-                                    getTest( id: 341 ) {
-                                        id
-                                    }
-                                }
-                                `
+
+request(
+            "/graphql"
+            ,
+            `query {
+                getTest( id: 341 ) {
+                    id
                 }
-            )
+            }
+            `
+    )
 .then(
         result => {
-            //console.log(result)
-            //alert(JSON.stringify(result,null,2))
+            console.log(result)
+            alert(JSON.stringify(result,null,2))
         }
     );
 
