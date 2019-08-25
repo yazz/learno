@@ -12,7 +12,7 @@ var double = input => {
                         return input * 2
                 }
 import { InMemoryCache } from "apollo-cache-inmemory";
-
+import { Hermes } from 'apollo-cache-hermes';
 
 import {ApolloClient} from 'apollo-boost';
 import gql from "graphql-tag";
@@ -31,17 +31,14 @@ const defaultOptions = {
 
 const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
-    cache:          new InMemoryCache({
-                            resultCaching: false,
-                            freezeResults: true
-    }),
+    cache:          new Hermes(),
     defaultOptions: defaultOptions,
     ssrMode:        true,
     assumeImmutableResults: true
 }
 );
 
-alert("GraphQL Win NT ")
+alert("GraphQL CP/M")
 
 
 
