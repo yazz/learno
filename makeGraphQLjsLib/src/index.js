@@ -1,4 +1,4 @@
-alert("GraphQL Commodore Plus 4")
+alert("GraphQL Commodore Vic 20")
 
 //import gql from 'graphql-tag';
 
@@ -9,7 +9,7 @@ alert("GraphQL Commodore Plus 4")
 //window.OfflineClient = OfflineClient
 //window.gql = gql
 import "@babel/polyfill";
-//import { createHttpLink } from "apollo-link-http";
+import { createHttpLink } from "apollo-link-http";
 var double = input => {
                         return input * 2
                 }
