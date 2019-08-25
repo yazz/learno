@@ -18,7 +18,8 @@
     "graphql-request": "^1.8.2",
     "ip": "^1.1.5",
     "pg": "^7.12.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.2.0",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -34,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/zubairq/learno/issues"
   },
-  "homepage": "https://github.com/zubairq/learno#readme"
+  "homepage": "https://github.com/zubairq/learno#readme",
+  "alias": {
+      "vue" : "./node_modules/vue/dist/vue.common.js"
+    }
 }

@@ -1,18 +1,11 @@
-//alert("GraphQL Zork2")
-
-//import gql from 'graphql-tag';
-
-//import { OfflineClient } from '@aerogear/voyager-client';
-
-//console.log(OfflineClient)
-
-//window.OfflineClient = OfflineClient
-//window.gql = gql
 import "@babel/polyfill";
 import { request } from "graphql-request";
+import Vue from "vue";
+
 var double = input => {
                         return input * 2
                 }
+
 
 
 
@@ -35,6 +28,23 @@ request(
     );
 
 
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Learno',
+        courses: [],
+        top_courses: [],
+        questions: [],
+        mode: "courses"
+    },
+    mounted: function() {
+    },
+    methods: {
+        getQuestions: async function(courseId) {
+        }
+    }
+})
 
 
 //import { ApolloClient, createNetworkInterface } from 'apollo-client//import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
