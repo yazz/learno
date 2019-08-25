@@ -36,11 +36,12 @@ const client = new ApolloClient({
                             freezeResults: true
     }),
     defaultOptions: defaultOptions,
-    ssrMode:        true
+    ssrMode:        true,
+    assumeImmutableResults: true
 }
 );
 
-alert("GraphQL Win 95 ")
+alert("GraphQL Win NT ")
 
 
 
