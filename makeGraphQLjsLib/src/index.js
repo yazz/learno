@@ -33,10 +33,11 @@ const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
     cache:          new InMemoryCache(),
     defaultOptions: defaultOptions,
+    ssrMode:        true
 }
 );
 
-alert("GraphQL 4.x")
+alert("GraphQL 5.x")
 
 
 
