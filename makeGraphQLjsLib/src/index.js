@@ -1,4 +1,4 @@
-alert("GraphQL C16")
+alert("GraphQL Commodore Plus 4")
 
 //import gql from 'graphql-tag';
 
@@ -9,17 +9,18 @@ alert("GraphQL C16")
 //window.OfflineClient = OfflineClient
 //window.gql = gql
 import "@babel/polyfill";
-import { createHttpLink } from "apollo-link-http";
+//import { createHttpLink } from "apollo-link-http";
 var double = input => {
                         return input * 2
                 }
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { Hermes } from 'apollo-cache-hermes';
+//import { InMemoryCache } from "apollo-cache-inmemory";
+//import { Hermes } from 'apollo-cache-hermes';
 
-import {ApolloClient} from 'apollo-boost';
-import gql from "graphql-tag";
+//import {ApolloClient} from 'apollo-boost';
+//import gql from "graphql-tag";
 
 // the Apollo cache is set up automatically
+/*
 const defaultOptions = {
       watchQuery: {
         fetchPolicy: 'network-only',
@@ -30,7 +31,7 @@ const defaultOptions = {
         errorPolicy: 'all',
       },
     }
-
+*/
 /*
 const client = new ApolloClient({
     link:           createHttpLink({ uri: "/graphql" }),
