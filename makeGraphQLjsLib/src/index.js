@@ -36,7 +36,7 @@ const client = new ApolloClient({
 }
 );
 
-alert("GraphQL 2")
+alert("GraphQL 3.x")
 
 
 
