@@ -11,6 +11,7 @@
     "@babel/polyfill": "^7.4.4",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-link-http": "^1.5.15",
+    "bootstrap": "^4.3.1",
     "compression": "^1.7.4",
     "core-js": "^2.6.9",
     "express": "^4.17.1",
@@ -37,6 +38,6 @@
   },
   "homepage": "https://github.com/zubairq/learno#readme",
   "alias": {
-      "vue" : "./node_modules/vue/dist/vue.common.js"
-    }
+    "vue": "./node_modules/vue/dist/vue.common.js"
+  }
 }
