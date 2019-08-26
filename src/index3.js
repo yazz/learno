@@ -1,11 +1,7 @@
-import "@babel/polyfill";
-import { request } from "graphql-request";
-import Vue from "vue";
-
-var double = input => {
-                        return input * 2
-                }
-
+import  "@babel/polyfill";
+import { request }          from "graphql-request";
+import   Vue                from "vue";
+import   MainVueApp         from "./main-vue-app";
 
 
 
@@ -32,14 +28,16 @@ request(
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Learno',
-        courses: [],
-        top_courses: [],
-        questions: [],
-        mode: "courses"
-    },
+        message:        'Learno',
+        courses:         [],
+        top_courses:     [],
+        questions:       [],
+        mode:           "courses"
+    }
+    ,
     mounted: function() {
-    },
+    }
+    ,
     methods: {
         getQuestions: async function(courseId) {
         }
