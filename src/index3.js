@@ -24,27 +24,6 @@ request(
     );
 
 
-
-var app = new Vue({
-    el: '#app',
-    data: {
-        message:        'Learno',
-        courses:         [],
-        top_courses:     [],
-        questions:       [],
-        mode:           "courses"
-    }
-    ,
-    mounted: function() {
-    }
-    ,
-    methods: {
-        getQuestions: async function(courseId) {
-        }
-    }
-})
-
-
 //import { ApolloClient, createNetworkInterface } from 'apollo-client//import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
 /*
 var networkInterface = createNetworkInterface({
