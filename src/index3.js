@@ -1,10 +1,29 @@
 import  "@babel/polyfill";
 import { request }          from "graphql-request";
 import   Vue                from "vue";
-import   MainVueApp         from "./main-vue-app";
+import   App         from "./main-vue-app.vue";
 
 
 
+var app = new Vue({
+    el: '#app',
+    data: {
+        message:        'Learno',
+        courses:         [],
+        top_courses:     [],
+        questions:       [],
+        mode:           "courses"
+    }
+    ,
+    mounted: function() {
+    }
+    ,
+    methods: {
+        getQuestions: async function(courseId) {
+        }
+    },
+    components: { App }
+})
 
 request(
             "/graphql"
