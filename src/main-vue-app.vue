@@ -82,16 +82,22 @@
 
 import Vue from "vue";
 
-export default Vue.extend({
-  data() {
-    return {
-        message: 'Learno',
-        courses: [],
-        top_courses: [],
-        questions: [],
-        mode: "courses"
-    };
-  }
-});
+export default Vue.extend(
+    {
+        props: ["courses"]
+        ,
+        data: function() {
+            return {
+                message: 'Learno',
+                top_courses: [],
+                questions: [],
+                mode: "courses"
+            }
+        }
+        ,
+        mounted: function() {
+        }
+    }
+);
 
 </script>

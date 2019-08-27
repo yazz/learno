@@ -4,7 +4,48 @@ import   Vue                from "vue";
 import   App         from "./main-vue-app.vue";
 
 
+var bus = new Vue();
+    // Define a new component called button-counter
+    Vue.component('button-counter', {
+      data: function () {
+        return {
+          count: 0
+        }
+      },
+      template:
+`<div class="card" style="margin-bottom: 40px;">
+  <header class="card-header">
+      <p   class="card-header-title"
+           v-on:click=' bus.$emit("setAppMode", "questions"); bus.$emit("getQuestions", table.id)'>
 
+          {{table.name}} - Rating: {{table.rating}}
+      </p>
+
+      <a href="#" class="card-header-icon" aria-   label="more options">
+          <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+      </a>
+  </header>
+
+
+  <div class="card-content">
+      <div class="content">
+          {{table.description}}
+      </div>
+  </div>
+
+  <footer class="card-footer">
+      <a href="#" class="card-footer-item">Start</a>
+      <a href="#" class="card-footer-item">Similar</a>
+      <a href="#" class="card-footer-item">Continue</a>
+  </footer>
+</div>`,
+props:["table"]
+    })
+
+
+    
 var app = new Vue({
     el: '#app',
     data: {
@@ -94,3 +135,11 @@ const client = new ApolloClient({
   }
 })
 */
+
+var userAction3 = async () => {
+  const response = await fetch('/get_courses');
+  const myJson = await response.json();
+  app.courses = myJson
+  console.log(app.courses)
+}
+userAction3()
