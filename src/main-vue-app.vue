@@ -26,7 +26,7 @@
                       <div   v-if='mode == "courses"'  v-for='table in courses'>
 
 
-                              <button-counter v-bind:table="table"></button-counter>
+                              <button-counter v-bind:table="table"  v-bind:bus='bus'></button-counter>
                       </div>
 
 

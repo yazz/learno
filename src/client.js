@@ -16,7 +16,7 @@ var bus = new Vue();
 `<div class="card" style="margin-bottom: 40px;">
   <header class="card-header">
       <p   class="card-header-title"
-           v-on:click=' bus.$emit("setAppMode", "questions"); bus.$emit("getQuestions", table.id)'>
+           v-on:click=' this.bus.$emit("setAppMode", "questions");this.bus.$emit("getQuestions", table.id)'>
 
           {{table.name}} - Rating: {{table.rating}}
       </p>
@@ -53,7 +53,8 @@ var app = new Vue({
         courses:         [],
         top_courses:     [],
         questions:       [],
-        mode:           "courses"
+        mode:           "courses",
+        bus:             bus
     }
     ,
     mounted: function() {
