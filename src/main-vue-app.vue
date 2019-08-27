@@ -84,12 +84,11 @@ import Vue from "vue";
 
 export default Vue.extend(
     {
-        props: ["courses"]
+        props: ["top_courses","courses","bus"]
         ,
         data: function() {
             return {
                 message: 'Learno',
-                top_courses: [],
                 questions: [],
                 mode: "courses"
             }

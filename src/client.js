@@ -45,7 +45,7 @@ props:["table"]
     })
 
 
-    
+
 var app = new Vue({
     el: '#app',
     data: {
@@ -136,10 +136,29 @@ const client = new ApolloClient({
 })
 */
 
+bus.$on('getQuestions', (id) => {
+    app.getQuestions(id)
+    window.history.pushState("object or string", "Title", "/course_ids/" + id);
+})
+bus.$on('setAppMode', (id) => {
+    app.mode=id
+})
+
+
+
 var userAction3 = async () => {
   const response = await fetch('/get_courses');
   const myJson = await response.json();
   app.courses = myJson
-  console.log(app.courses)
 }
 userAction3()
+
+
+
+    var userAction4 = async () => {
+      const response = await fetch('/get_top_courses');
+      const myJson = await response.json();
+      app.top_courses = myJson
+      console.log(app.top_courses)
+    }
+    userAction4()
