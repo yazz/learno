@@ -1,16 +1,18 @@
 import  "@babel/polyfill";
 import { request }          from "graphql-request";
 import   Vue                from "vue";
-import   App                from "./main-vue-window.vue";
-
-import Vuex                 from 'vuex';
+import   MainWindow         from "./main-vue-window.vue";
+import   Vuex               from 'vuex';
 
 Vue.use(Vuex);
-
 
 import { store } from './store.js'
 
 var bus = new Vue();
+
+
+
+
 
     // Define a new component called button-counter
     Vue.component('button-counter', {
@@ -47,9 +49,12 @@ var bus = new Vue();
       <a href="#" class="card-footer-item">Similar</a>
       <a href="#" class="card-footer-item">Continue</a>
   </footer>
-</div>`,
+</div>`
+,
 props:["table"]
     })
+
+
 
 
 
@@ -72,7 +77,7 @@ var app = new Vue({
         }
     }
     ,
-    components: { App }
+    components: { "main-window": MainWindow }
     ,
     store:        store
 
