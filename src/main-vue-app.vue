@@ -73,7 +73,6 @@
           </div>
       </div>
 
-      <div class="modal__footer"></div>
   </div>
 </template>
 
