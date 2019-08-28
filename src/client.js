@@ -3,9 +3,13 @@ import { request }          from "graphql-request";
 import   Vue                from "vue";
 import   App                from "./main-vue-app.vue";
 
-import Vuex from 'vuex'
+import Vuex                 from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
+
+import store from './store'
+
 
 var bus = new Vue();
     // Define a new component called button-counter
@@ -56,8 +60,8 @@ var app = new Vue({
         courses:         [],
         top_courses:     [],
         questions:       [],
-        mode:           "top_courses",
-        bus:             bus
+        bus:             bus,
+        store:           store
     }
     ,
     mounted: function() {
