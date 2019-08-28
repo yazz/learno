@@ -79,7 +79,7 @@ request(
     )
 .then(
         result => {
-            console.log(result)
+            //console.log(result)
             //alert(JSON.stringify(result,null,2))
         }
     );
@@ -160,6 +160,6 @@ userAction3()
       const response = await fetch('/get_top_courses');
       const myJson = await response.json();
       app.top_courses = myJson
-      console.log(app.top_courses)
+      //console.log(app.top_courses)
     }
     userAction4()
