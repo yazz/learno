@@ -8,10 +8,16 @@ Vue.use(Vuex);
 export const store = new Vuex.Store(
     {
         state: {
-            flavor: '',
+            flavor: ''
+            ,
             mode:   "home"
         }
         ,
+
+
+
+
+
         mutations: {
             change(state, flavor) {
                 state.flavor = flavor
@@ -20,9 +26,16 @@ export const store = new Vuex.Store(
             setMode(state, newMode) {
                 state.mode = newMode
             }
-        },
+        }
+        ,
+
+
+
+
+
         getters: {
-            flavor: state => state.flavor,
+            flavor: state => state.flavor
+            ,
             mode: state => state.mode
         }
     }

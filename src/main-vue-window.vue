@@ -5,14 +5,14 @@
               <div class="container">
                   <div>Learno</div>
 
-                  <div v-bind:class='"button is-medium " + ((mode == "home")?"is-dark":"is-light")'
-                       v-on:click='mode = "home";showMode();'>Home</div>
+                  <div v-bind:class='"button is-medium " + (($store.getters.mode == "home")?"is-dark":"is-light")'
+                       v-on:click='$store.commit("setMode", "home");'>Home</div>
 
-                  <div    v-on:click='mode = "courses";$store.commit("setMode", "courses");'
-                          v-bind:class='"button is-medium " + ((mode == "courses")?"is-dark":"is-light")'>Courses</div>
+                  <div    v-on:click='$store.commit("setMode", "courses");'
+                          v-bind:class='"button is-medium " + (($store.getters.mode == "courses")?"is-dark":"is-light")'>Courses</div>
 
-                  <div    v-on:click='mode = "questions";$store.commit("setMode", "questions");'
-                          v-bind:class='"button is-medium " + ((mode == "questions")?"is-dark":"is-light")'>Questions</div>
+                  <div    v-on:click='$store.commit("setMode", "questions");'
+                          v-bind:class='"button is-medium " + (($store.getters.mode == "questions")?"is-dark":"is-light")'>Questions</div>
               </div>
           </div>
 
@@ -23,7 +23,7 @@
               <section  class="section">
                   <div class="container">
 
-                      <div   v-if='mode == "courses"'  v-for='table in courses'>
+                      <div   v-if='$store.getters.mode == "courses"'  v-for='table in courses'>
 
 
                               <button-counter   v-bind:table="table"
@@ -33,8 +33,8 @@
 
 
 
-                    <div  v-if='mode == "questions"'>
-                      <div  v-if='mode == "questions"'
+                    <div  v-if='$store.getters.mode == "questions"'>
+                      <div  v-if='$store.getters.mode == "questions"'
                             v-for='questionRecord in questions'>
 
                             <div v-html="questionRecord.question"></div>
@@ -56,10 +56,10 @@
 
 
 
-                      <div    v-if='mode == "home"'
+                      <div    v-if='$store.getters.mode == "home"'
                               id="components-demo">
 
-                              <div   v-if='mode == "home"'  v-for='table in top_courses'>
+                              <div   v-if='$store.getters.mode == "home"'  v-for='table in top_courses'>
 
 
                                       <button-counter v-bind:table="table"></button-counter>
@@ -83,15 +83,14 @@
 
 import Vue from "vue";
 
-export default Vue.extend(
+module.exports =
     {
         props: ["top_courses","courses","bus"]
         ,
         data: function() {
             return {
                 message:    'Learno',
-                questions:  [],
-                mode:       "home"
+                questions:  []
             }
         }
         ,
@@ -99,12 +98,8 @@ export default Vue.extend(
         }
         ,
         methods: {
-            showMode: function() {
-                alert(1)
-                alert(this.$store.mode)
-            }
         }
     }
-);
+
 
 </script>
