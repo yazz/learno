@@ -90,7 +90,7 @@ export default Vue.extend(
             return {
                 message: 'Learno',
                 questions: [],
-                mode: "courses"
+                mode: "home"
             }
         }
         ,

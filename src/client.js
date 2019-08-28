@@ -1,7 +1,7 @@
 import  "@babel/polyfill";
 import { request }          from "graphql-request";
 import   Vue                from "vue";
-import   App         from "./main-vue-app.vue";
+import   App                from "./main-vue-app.vue";
 
 
 var bus = new Vue();
@@ -53,7 +53,7 @@ var app = new Vue({
         courses:         [],
         top_courses:     [],
         questions:       [],
-        mode:           "courses",
+        mode:           "top_courses",
         bus:             bus
     }
     ,
@@ -146,14 +146,14 @@ bus.$on('setAppMode', (id) => {
 })
 
 
-
+/*
 var userAction3 = async () => {
   const response = await fetch('/get_courses');
   const myJson = await response.json();
   app.courses = myJson
 }
 userAction3()
-
+*/
 
 
     var userAction4 = async () => {
