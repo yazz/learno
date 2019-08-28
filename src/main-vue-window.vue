@@ -6,12 +6,12 @@
                   <div>Learno</div>
 
                   <div v-bind:class='"button is-medium " + ((mode == "home")?"is-dark":"is-light")'
-                       v-on:click='mode = "home"'>Home</div>
+                       v-on:click='mode = "home";showMode();'>Home</div>
 
-                  <div    v-on:click='mode = "courses"'
+                  <div    v-on:click='mode = "courses";$store.commit("setMode", "courses");'
                           v-bind:class='"button is-medium " + ((mode == "courses")?"is-dark":"is-light")'>Courses</div>
 
-                  <div    v-on:click='mode = "questions"'
+                  <div    v-on:click='mode = "questions";$store.commit("setMode", "questions");'
                           v-bind:class='"button is-medium " + ((mode == "questions")?"is-dark":"is-light")'>Questions</div>
               </div>
           </div>
@@ -26,7 +26,9 @@
                       <div   v-if='mode == "courses"'  v-for='table in courses'>
 
 
-                              <button-counter v-bind:table="table"  v-bind:bus='bus'></button-counter>
+                              <button-counter   v-bind:table="table"
+                                                v-bind:bus='bus'>
+                              </button-counter>
                       </div>
 
 
@@ -87,13 +89,20 @@ export default Vue.extend(
         ,
         data: function() {
             return {
-                message: 'Learno',
-                questions: [],
-                mode: "home"
+                message:    'Learno',
+                questions:  [],
+                mode:       "home"
             }
         }
         ,
         mounted: function() {
+        }
+        ,
+        methods: {
+            showMode: function() {
+                alert(1)
+                alert(this.$store.mode)
+            }
         }
     }
 );

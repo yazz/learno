@@ -1,17 +1,17 @@
 import  "@babel/polyfill";
 import { request }          from "graphql-request";
 import   Vue                from "vue";
-import   App                from "./main-vue-app.vue";
+import   App                from "./main-vue-window.vue";
 
 import Vuex                 from 'vuex';
 
 Vue.use(Vuex);
 
 
-import store from './store'
-
+import { store } from './store.js'
 
 var bus = new Vue();
+
     // Define a new component called button-counter
     Vue.component('button-counter', {
       data: function () {
@@ -54,14 +54,14 @@ props:["table"]
 
 
 var app = new Vue({
-    el: '#app',
+    el: '#app'
+    ,
     data: {
         message:        'Learno',
         courses:         [],
         top_courses:     [],
         questions:       [],
-        bus:             bus,
-        store:           store
+        bus:             bus
     }
     ,
     mounted: function() {
@@ -70,8 +70,12 @@ var app = new Vue({
     methods: {
         getQuestions: async function(courseId) {
         }
-    },
+    }
+    ,
     components: { App }
+    ,
+    store:        store
+
 })
 
 request(

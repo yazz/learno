@@ -16,9 +16,14 @@ export const store = new Vuex.Store(
             change(state, flavor) {
                 state.flavor = flavor
             }
+            ,
+            setMode(state, newMode) {
+                state.mode = newMode
+            }
         },
         getters: {
-            flavor: state => state.flavor
+            flavor: state => state.flavor,
+            mode: state => state.mode
         }
     }
 )
