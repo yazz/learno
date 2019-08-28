@@ -3,6 +3,9 @@ import { request }          from "graphql-request";
 import   Vue                from "vue";
 import   App                from "./main-vue-app.vue";
 
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
 
 var bus = new Vue();
     // Define a new component called button-counter
