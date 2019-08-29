@@ -82,6 +82,7 @@
 <script>
 
 import Vue from "vue";
+import buttonCounter from "./button-counter.vue";
 
 module.exports =
     {
@@ -98,6 +99,10 @@ module.exports =
         }
         ,
         methods: {
+        }
+        ,
+        components: {
+            "button-counter": buttonCounter
         }
     }
 
