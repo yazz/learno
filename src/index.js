@@ -122,7 +122,10 @@ const typeDefs = gql`
   type Test {
       id:Int
       name: String
+      description: String
       questions: [Question]
+      rating: Int
+
   }
   type User {
       id: Int
@@ -133,6 +136,7 @@ const typeDefs = gql`
     getTests: [Test]
     getTest(id: Int): Test
     getUsers: [User]
+    getTopCourses: [Test]
   }
 `
 
@@ -159,7 +163,23 @@ const resolvers = {
         return new Promise((resolve, reject) => {
             //return `Hello world ${args.name}`
             console.log(123);
-            dbb.query("select id,name from learno_tests;", [], function (err, result) {
+            dbb.query("select id,name, description from learno_tests;", [], function (err, result) {
+              if (err) {
+                  console.log({failed: '' + err});
+                  reject(err)
+              } else {
+                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                  console.log(JSON.stringify(result.rows,null,2))
+                  resolve(result.rows)
+              };
+            })
+        })
+    },
+    getTopCourses: (obj, args, context, info) => {
+        return new Promise((resolve, reject) => {
+            dbb.query("select id,name, description, rating from learno_tests where publish='Y' and type='TEST' and rating > 0 and parent_test_id=121 order by rating desc limit 10;",
+            [],
+            function (err, result) {
               if (err) {
                   console.log({failed: '' + err});
                   reject(err)
@@ -175,7 +195,7 @@ const resolvers = {
         return new Promise((resolve, reject) => {
             //return `Hello world ${args.name}`
             console.log(123);
-            dbb.query("select id,name from learno_tests where id = " + args.id, [], function (err, result) {
+            dbb.query("select id,name,description from learno_tests where id = " + args.id, [], function (err, result) {
               if (err) {
                   console.log({failed: '' + err});
                   reject(err)
@@ -309,38 +329,6 @@ app.get('/get_courses', (req, res) => {
 
 
 
-
-app.get('/get_top_courses', (req, res) => {
-    var config = {
-      user:              "postgres",
-      database:          "learno",
-      password:          "postgres",
-      host:              "127.0.0.1",
-      port:              5432
-    };
-    var dbconnection = new postgresdb.Client(config);
-    dbconnection.connect(function (err) {
-      if (err) {
-          console.log({error: '' + err});
-      } else {
-              useSql = "select id,name, description, rating from learno_tests where publish='Y' and type='TEST' and rating > 0 and parent_test_id=121 order by rating desc limit 10"
-          dbconnection.query(useSql, [], function (err, result) {
-            if (err) {
-                console.log({failed: '' + err});
-            } else {
-                console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                res.writeHead(200, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify(
-                    result.rows
-                ));
-            };
-          })
-
-      }
-    });
-
-
-});
 
 
 

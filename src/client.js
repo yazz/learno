@@ -48,8 +48,10 @@ request(
             "/graphql"
             ,
             `query {
-                getTest( id: 341 ) {
+                getTopCourses {
                     id
+                    name
+                    description
                 }
             }
             `
@@ -58,6 +60,7 @@ request(
         result => {
             //console.log(result)
             //alert(JSON.stringify(result,null,2))
+            app.top_courses = result.getTopCourses
         }
     );
 
@@ -131,12 +134,3 @@ var userAction3 = async () => {
 }
 userAction3()
 */
-
-
-    var userAction4 = async () => {
-      const response = await fetch('/get_top_courses');
-      const myJson = await response.json();
-      app.top_courses = myJson
-      //console.log(app.top_courses)
-    }
-    userAction4()
