@@ -16,8 +16,7 @@
 
 
       <div class="card-content">
-          <div class="content">
-              {{table.description}}
+          <div class="content" v-html="table.description">
           </div>
       </div>
 
