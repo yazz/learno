@@ -26,9 +26,9 @@
                       <div   v-if='$store.getters.mode == "courses"'  v-for='table in courses'>
 
 
-                              <button-counter   v-bind:table="table"
+                              <course-card   v-bind:table="table"
                                                 v-bind:bus='bus'>
-                              </button-counter>
+                              </course-card>
                       </div>
 
 
@@ -59,10 +59,10 @@
                       <div    v-if='$store.getters.mode == "home"'
                               id="components-demo">
 
-                              <div   v-if='$store.getters.mode == "home"'  v-for='table in top_courses'>
+                              <div      v-if='$store.getters.mode == "home"'
+                                        v-for='table in top_courses'>
 
-
-                                      <button-counter v-bind:table="table"></button-counter>
+                                      <course-card v-bind:table="table"></course-card>
                               </div>
 
                       </div>
@@ -82,7 +82,7 @@
 <script>
 
 import Vue from "vue";
-import buttonCounter from "./button-counter.vue";
+import buttonCounter from "./course-card.vue";
 
 module.exports =
     {
@@ -102,7 +102,7 @@ module.exports =
         }
         ,
         components: {
-            "button-counter": buttonCounter
+            "course-card": buttonCounter
         }
     }
 
