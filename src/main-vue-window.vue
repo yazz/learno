@@ -23,7 +23,8 @@
               <section  class="section">
                   <div class="container">
 
-                      <div   v-if='$store.getters.mode == "courses"'  v-for='table in courses'>
+                      <div   v-if='$store.getters.mode == "courses"'
+                             v-for='table in $store.getters.courses'>
 
 
                               <course-card   v-bind:table="table"

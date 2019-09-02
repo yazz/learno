@@ -63,6 +63,30 @@ request(
     );
 
 
+
+
+
+    request(
+                "/graphql"
+                ,
+                `query {
+                    getTests {
+                        id
+                        name
+                        description
+                    }
+                }
+                `
+        )
+    .then(
+            result => {
+                //console.log(result)
+                //alert(JSON.stringify(result,null,2))
+                store.commit("setTests", result.getTests)
+            }
+        );
+
+
 //import { ApolloClient, createNetworkInterface } from 'apollo-client//import { SubscriptionClient, addGraphQLSubscriptions } from 'subscriptions-transport-ws'
 /*
 var networkInterface = createNetworkInterface({

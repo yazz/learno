@@ -127,6 +127,12 @@ app.get('/course_ids/*', (req, res) => {
 });
 
 
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
 function sendOverWebSockets(data) {
     var ll = serverwebsockets.length;
     //console.log('send to sockets Count: ' + JSON.stringify(serverwebsockets.length));
@@ -136,6 +142,12 @@ function sendOverWebSockets(data) {
         //console.log('                    sock ' + i + ': ' + JSON.stringify(sock.readyState));
     }
 }
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
 var pgglobal = {
   user:              "postgres",
   database:          "learno",
@@ -143,10 +155,17 @@ var pgglobal = {
   host:              "127.0.0.1",
   port:              5432
 };
-var dbb = new postgresdb.Client(pgglobal);
 
+
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
+var dbb = new postgresdb.Client(pgglobal);
 dbb.connect(function (err) {
-console.log("Connected: " + err)
+    console.log("Connected: " + err)
 })
 
 const typeDefs = gql`
@@ -177,108 +196,140 @@ const typeDefs = gql`
   }
 `
 
-//Create the resolvers for your schema
+
+
+
+
+// ----------------------------------------------------------------------
+// Create the resolvers for your schema
+// ----------------------------------------------------------------------
 const resolvers = {
-  Query: {
-    getQuestions: (obj, args, context, info) => {
-        return new Promise((resolve, reject) => {
-            //return `Hello world ${args.name}`
-            console.log(123);
-            dbb.query("select id, question,category from learno_questions;", [], function (err, result) {
-              if (err) {
-                  console.log({failed: '' + err});
-                  reject(err)
-              } else {
-                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                  console.log(JSON.stringify(result.rows,null,2))
-                  resolve(result.rows)
-              };
+    Query: {
+        //
+        // get list of questions
+        //
+        getQuestions: (obj, args, context, info) => {
+            return new Promise((resolve, reject) => {
+                //return `Hello world ${args.name}`
+                console.log(123);
+                dbb.query("select id, question,category from learno_questions;", [], function (err, result) {
+                  if (err) {
+                      console.log({failed: '' + err});
+                      reject(err)
+                  } else {
+                      console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                      console.log(JSON.stringify(result.rows,null,2))
+                      resolve(result.rows)
+                  };
+                })
             })
-        })
+        },
+
+
+
+
+        //
+        // get all the tests
+        //
+        getTests: (obj, args, context, info) => {
+            return new Promise((resolve, reject) => {
+                dbb.query("select id,name, description,rating from learno_tests;", [], function (err, result) {
+                  if (err) {
+                      console.log({failed: '' + err});
+                      reject(err)
+                  } else {
+                      console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                      console.log(JSON.stringify(result.rows,null,2))
+                      resolve(result.rows)
+                  };
+                })
+            })
+        },
+
+
+
+
+        getTopCourses: (obj, args, context, info) => {
+            return new Promise((resolve, reject) => {
+                dbb.query("select id,name, description, rating from learno_tests where publish='Y' and type='TEST' and rating > 0 and parent_test_id=121 order by rating desc limit 10;",
+                [],
+                function (err, result) {
+                  if (err) {
+                      console.log({failed: '' + err});
+                      reject(err)
+                  } else {
+                      console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                      console.log(JSON.stringify(result.rows,null,2))
+                      resolve(result.rows)
+                  };
+                })
+            })
+        },
+
+
+
+
+
+        getTest: (obj, args, context, info) => {
+            return new Promise((resolve, reject) => {
+                //return `Hello world ${args.name}`
+                console.log(123);
+                dbb.query("select id,name,description from learno_tests where id = " + args.id, [], function (err, result) {
+                  if (err) {
+                      console.log({failed: '' + err});
+                      reject(err)
+                  } else {
+                      console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                      console.log(JSON.stringify(result.rows,null,2))
+                      resolve(result.rows[0])
+                  };
+                })
+            })
+        },
+
+
+
+
+        getUsers: (obj, args, context, info) => {
+            return new Promise((resolve, reject) => {
+                //return `Hello world ${args.name}`
+                console.log(123);
+                dbb.query("select id,user_name from yazz_login_details" , [], function (err, result) {
+                  if (err) {
+                      console.log({failed: '' + err});
+                      reject(err)
+                  } else {
+                      console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                      console.log(JSON.stringify(result.rows,null,2))
+                      resolve(result.rows)
+                  };
+                })
+            })
+        }
     },
-    getTests: (obj, args, context, info) => {
-        return new Promise((resolve, reject) => {
-            //return `Hello world ${args.name}`
-            console.log(123);
-            dbb.query("select id,name, description from learno_tests;", [], function (err, result) {
-              if (err) {
-                  console.log({failed: '' + err});
-                  reject(err)
-              } else {
-                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                  console.log(JSON.stringify(result.rows,null,2))
-                  resolve(result.rows)
-              };
+
+
+
+
+
+    Test: {
+        questions: (obj, args, context, info) => {
+            return new Promise((resolve, reject) => {
+                //return `Hello world ${args.name}`
+                console.log(123);
+                dbb.query("select id, question,category from learno_questions where fk_exam_id = " + obj.id, [], function (err, result) {
+                  if (err) {
+                      console.log({failed: '' + err});
+                      reject(err)
+                  } else {
+                      console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
+                      console.log(JSON.stringify(result.rows,null,2))
+                      resolve(result.rows)
+                  };
+                })
             })
-        })
-    },
-    getTopCourses: (obj, args, context, info) => {
-        return new Promise((resolve, reject) => {
-            dbb.query("select id,name, description, rating from learno_tests where publish='Y' and type='TEST' and rating > 0 and parent_test_id=121 order by rating desc limit 10;",
-            [],
-            function (err, result) {
-              if (err) {
-                  console.log({failed: '' + err});
-                  reject(err)
-              } else {
-                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                  console.log(JSON.stringify(result.rows,null,2))
-                  resolve(result.rows)
-              };
-            })
-        })
-    },
-    getTest: (obj, args, context, info) => {
-        return new Promise((resolve, reject) => {
-            //return `Hello world ${args.name}`
-            console.log(123);
-            dbb.query("select id,name,description from learno_tests where id = " + args.id, [], function (err, result) {
-              if (err) {
-                  console.log({failed: '' + err});
-                  reject(err)
-              } else {
-                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                  console.log(JSON.stringify(result.rows,null,2))
-                  resolve(result.rows[0])
-              };
-            })
-        })
-    },
-    getUsers: (obj, args, context, info) => {
-        return new Promise((resolve, reject) => {
-            //return `Hello world ${args.name}`
-            console.log(123);
-            dbb.query("select id,user_name from yazz_login_details" , [], function (err, result) {
-              if (err) {
-                  console.log({failed: '' + err});
-                  reject(err)
-              } else {
-                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                  console.log(JSON.stringify(result.rows,null,2))
-                  resolve(result.rows)
-              };
-            })
-        })
+        }
     }
-},
-Test: {
-    questions: (obj, args, context, info) => {
-        return new Promise((resolve, reject) => {
-            //return `Hello world ${args.name}`
-            console.log(123);
-            dbb.query("select id, question,category from learno_questions where fk_exam_id = " + obj.id, [], function (err, result) {
-              if (err) {
-                  console.log({failed: '' + err});
-                  reject(err)
-              } else {
-                  console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                  console.log(JSON.stringify(result.rows,null,2))
-                  resolve(result.rows)
-              };
-            })
-        })
-    }
-}
 
 }
 
@@ -294,75 +345,9 @@ app.listen(80, () => {
   console.log('Example app listening on port 80!')
 });
 
-app.get('/learno', (req, res) => {
-    var config = {
-      user:              "postgres",
-      database:          "learno",
-      password:          "postgres",
-      host:              "127.0.0.1",
-      port:              5432
-    };
-    var dbconnection = new postgresdb.Client(config);
-    dbconnection.connect(function (err) {
-      if (err) {
-          console.log({error: '' + err});
-      } else {
-              useSql = "SELECT tablename as name FROM pg_catalog.pg_tables where schemaname = 'public';"
-          dbconnection.query(useSql, [], function (err, result) {
-            if (err) {
-                console.log({failed: '' + err});
-            } else {
-                console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                res.writeHead(200, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify(
-                    result.rows
-                ));
-            };
-          })
-
-      }
-    });
-
-
-});
 
 
 
-
-
-
-
-app.get('/get_courses', (req, res) => {
-    var config = {
-      user:              "postgres",
-      database:          "learno",
-      password:          "postgres",
-      host:              "127.0.0.1",
-      port:              5432
-    };
-    var dbconnection = new postgresdb.Client(config);
-    dbconnection.connect(function (err) {
-      if (err) {
-          console.log({error: '' + err});
-      } else {
-              useSql = "SELECT id, name, description,rating FROM learno_tests;"
-          dbconnection.query(useSql, [], function (err, result) {
-            if (err) {
-                console.log({failed: '' + err});
-            } else {
-                console.log("row count: " + result.rows.length); // outputs: { name: 'brianc' }
-                res.writeHead(200, {'Content-Type': 'application/json'});
-                res.end(JSON.stringify(
-                    result.rows
-                ));
-            };
-          })
-
-      }
-    });
-
-
-});
 
 
 
