@@ -1,53 +1,90 @@
-const express       = require('express')
-const fs            = require('fs')
-const compression   = require('compression')
-const postgresdb    = require('pg')
-var http            = require('http')
-var https           = require('https');
-const { VoyagerServer, gql } = require('@aerogear/voyager-server')
-
-var ip = require('ip');
-
-const app = express();
-
-var socket          = null
-
-var io = null;
-var serverwebsockets                    = [];
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
+const   express                 = require('express')
+const   fs                      = require('fs')
+const   compression             = require('compression')
+const   postgresdb              = require('pg')
+var     http                    = require('http')
+var     https                   = require('https');
+const { VoyagerServer, gql }    = require('@aerogear/voyager-server')
+var     ip                      = require('ip');
 
 
-var httpServer = http.createServer(app)
 
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
+const app               =  express();
+var socket              =  null
+var io                  =  null;
+var serverwebsockets    = [];
+var httpServer          =  http.createServer(app)
+
+
+
+
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
 app.use(compression())
-
-
-
-/*httpServer.listen(80, ip.address(), function (err) {
-console.log('trying port: ' + 80 + ' ')
-
-httpServer.once('close', function () {
-})
-httpServer.close()
-httpServer = null;
-})*/
-
-
 app.use(express.static('dist'))
 
+
+
+
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
 app.get('/', (req, res) => {
   res.send(fs.readFileSync("public/index.html").toString())
 });
 
 
+
+
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
 app.get('/gqljs', (req, res) => {
   res.send(fs.readFileSync("makeGraphQLjsLib/dist/index.js").toString())
 });
 
 
+
+
+
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
 app.get('/2', (req, res) => {
   res.send(fs.readFileSync("dist/index3.html").toString())
 });
 
+
+
+
+
+
+
+// ----------------------------------------------------------------------
+//
+// ----------------------------------------------------------------------
 app.get('/course_ids/*', (req, res) => {
     var qwer = fs.readFileSync("public/index.html").toString()
 
