@@ -23,7 +23,6 @@ var app = new Vue({
     el: '#app'
     ,
     data: {
-        courses:         [],
         questions:       [],
         bus:             bus
     }
