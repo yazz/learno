@@ -23,9 +23,7 @@ var app = new Vue({
     el: '#app'
     ,
     data: {
-        message:        'Learno',
         courses:         [],
-        top_courses:     [],
         questions:       [],
         bus:             bus
     }
@@ -60,7 +58,7 @@ request(
         result => {
             //console.log(result)
             //alert(JSON.stringify(result,null,2))
-            app.top_courses = result.getTopCourses
+            store.commit("setTopCourses", result.getTopCourses)
         }
     );
 

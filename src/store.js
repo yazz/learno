@@ -8,7 +8,9 @@ Vue.use(Vuex);
 export const store = new Vuex.Store(
     {
         state: {
-            mode:   "home"
+            mode:           "home"
+            ,
+            top_courses:   []
         }
         ,
 
@@ -20,6 +22,10 @@ export const store = new Vuex.Store(
             setMode(state, newMode) {
                 state.mode = newMode
             }
+            ,
+            setTopCourses(state, newMode) {
+                state.top_courses = newMode
+            }
         }
         ,
 
@@ -28,7 +34,8 @@ export const store = new Vuex.Store(
 
 
         getters: {
-            mode: state => state.mode
+            mode: state => state.mode,
+            topCourses: state => state.top_courses
         }
     }
 )

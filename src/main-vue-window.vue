@@ -60,7 +60,7 @@
                               id="components-demo">
 
                               <div      v-if='$store.getters.mode == "home"'
-                                        v-for='table in top_courses'>
+                                        v-for='table in $store.getters.topCourses'>
 
                                       <course-card v-bind:table="table"></course-card>
                               </div>
