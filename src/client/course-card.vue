@@ -2,7 +2,7 @@
     <div class="card" style="margin-bottom: 40px;">
       <header class="card-header">
           <p   class="card-header-title"
-               v-on:click=' this.bus.$emit("setAppMode", "questions");this.bus.$emit("getQuestions", table.id)'>
+               v-on:click='$store.commit("setMode", "questions");$store.commit("setQuestions", table.id);'>
 
               {{table.name}} - Rating: {{table.rating}}
           </p>

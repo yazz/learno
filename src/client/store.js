@@ -1,5 +1,6 @@
 import   Vue                from "vue";
 import   Vuex               from 'vuex';
+import { request }          from "graphql-request";
 
 Vue.use(Vuex);
 
@@ -13,6 +14,8 @@ export const store = new Vuex.Store(
             top_courses:   []
             ,
             courses:   []
+            ,
+            questions:   []
         }
         ,
 
@@ -32,6 +35,28 @@ export const store = new Vuex.Store(
             setTests(state, newMode) {
                 state.courses = newMode
             }
+            ,
+            setQuestions(state, newMode) {
+
+                request(
+                            "/graphql"
+                            ,
+                            `query {
+                                getQuestions(courseId: 341) {
+                                    id
+
+                                }
+                            }
+                            `
+                    )
+                .then(
+                        result => {
+                            //console.log(result)
+                            //alert(JSON.stringify(result,null,2))
+                            store.commit("setQuestions", result.getQuestions)
+                        }
+                    );
+            }
         }
         ,
 
@@ -42,7 +67,8 @@ export const store = new Vuex.Store(
         getters: {
             mode: state => state.mode,
             topCourses: state => state.top_courses,
-            courses: state => state.courses
+            courses: state => state.courses,
+            questions: state => state.questions
         }
     }
 )

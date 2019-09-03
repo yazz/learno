@@ -36,7 +36,7 @@
 
                     <div  v-if='$store.getters.mode == "questions"'>
                       <div  v-if='$store.getters.mode == "questions"'
-                            v-for='questionRecord in questions'>
+                            v-for='questionRecord in $store.getters.questions'>
 
                             <div v-html="questionRecord.question"></div>
                             *
