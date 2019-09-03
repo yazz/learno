@@ -39,14 +39,15 @@ module.exports = gql`
 
 
   type Query {
-    getQuestions:       [Question]
 
-    getTests:           [Test]
+    getQuestions(courseId: Int):  [Question]
 
-    getTest(id: Int):    Test
+    getTests:  [Test]
 
-    getUsers:           [User]
-    
-    getTopCourses:      [Test]
+    getTest(id: Int):  Test
+
+    getUsers:  [User]
+
+    getTopCourses:  [Test]
   }
 `
