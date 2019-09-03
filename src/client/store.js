@@ -42,9 +42,18 @@ export const store = new Vuex.Store(
                             "/graphql"
                             ,
                             `query {
-                                getQuestions(courseId: 341) {
+                                getQuestions(courseId: ${newMode}) {
                                     id
                                     question
+                                    category
+                                    multiple_answer_1
+                                    text_answer_1
+                                    multiple_answer_2
+                                    text_answer_2
+                                    multiple_answer_3
+                                    text_answer_3
+                                    multiple_answer_4
+                                    text_answer_4        
                                 }
                             }
                             `
@@ -53,7 +62,7 @@ export const store = new Vuex.Store(
                         result => {
                             //console.log(result)
                             //alert(JSON.stringify(result,null,2))
-                            store.commit("setQuestions", result.getQuestions)
+                            state.questions= result.getQuestions
                         }
                     );
             }
