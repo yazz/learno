@@ -8,7 +8,6 @@ const   postgresdb              = require('pg')
 var     http                    = require('http')
 var     https                   = require('https');
 const { VoyagerServer, gql }    = require('@aerogear/voyager-server')
-var     ip                      = require('ip');
 
 
 

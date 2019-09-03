@@ -145,28 +145,7 @@ function sendOverWebSockets(data) {
 
 
 
-// ----------------------------------------------------------------------
-//
-// ----------------------------------------------------------------------
-var pgglobal = {
-  user:              "postgres",
-  database:          "learno",
-  password:          "postgres",
-  host:              "127.0.0.1",
-  port:              5432
-};
 
-
-
-
-
-// ----------------------------------------------------------------------
-//
-// ----------------------------------------------------------------------
-var dbb = new postgresdb.Client(pgglobal);
-dbb.connect(function (err) {
-    console.log("Connected: " + err)
-})
 
 var resolvers     = require('./graphql_resolvers.js')
 
