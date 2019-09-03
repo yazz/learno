@@ -44,7 +44,7 @@ export const store = new Vuex.Store(
                             `query {
                                 getQuestions(courseId: 341) {
                                     id
-
+                                    question
                                 }
                             }
                             `

@@ -15,7 +15,14 @@ module.exports = gql`
       id:Int
       question: String
       category: String
-
+      multiple_answer_1: String
+      text_answer_1: String
+      multiple_answer_2: String
+      text_answer_2: String
+      multiple_answer_3: String
+      text_answer_3: String
+      multiple_answer_4: String
+      text_answer_4: String
   }
 
 
