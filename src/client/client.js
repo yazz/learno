@@ -9,6 +9,7 @@ Vue.use(Vuex);
 
 
 
+window.store = store
 
 var app = new Vue({
     el: '#app'
