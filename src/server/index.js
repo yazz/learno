@@ -19,9 +19,6 @@ var     ip                      = require('ip');
 //
 // ----------------------------------------------------------------------
 const app               =  express();
-var socket              =  null
-var io                  =  null;
-var serverwebsockets    = [];
 var httpServer          =  http.createServer(app)
 
 
@@ -117,21 +114,6 @@ app.get('/course_ids/*', (req, res) => {
 });
 
 
-
-
-
-// ----------------------------------------------------------------------
-//
-// ----------------------------------------------------------------------
-function sendOverWebSockets(data) {
-    var ll = serverwebsockets.length;
-    //console.log('send to sockets Count: ' + JSON.stringify(serverwebsockets.length));
-    for (var i =0 ; i < ll; i++ ) {
-        var sock = serverwebsockets[i];
-        sock.emit(data.type,data);
-        //console.log('                    sock ' + i + ': ' + JSON.stringify(sock.readyState));
-    }
-}
 
 
 
