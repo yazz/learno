@@ -53,13 +53,14 @@ export const store = new Vuex.Store(
                                     multiple_answer_3
                                     text_answer_3
                                     multiple_answer_4
-                                    text_answer_4        
+                                    text_answer_4
                                 }
                             }
                             `
                     )
                 .then(
                         result => {
+                            window.history.pushState("object or string", "Title", "/course_ids/" + newMode);
                             //console.log(result)
                             //alert(JSON.stringify(result,null,2))
                             state.questions= result.getQuestions

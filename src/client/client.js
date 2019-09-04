@@ -3,18 +3,9 @@ import { request }          from "graphql-request";
 import   Vue                from "vue";
 import   MainWindow         from "./main-vue-window.vue";
 import   Vuex               from 'vuex';
-
-Vue.use(Vuex);
-
 import { store } from './store.js'
 
-var bus = new Vue();
-
-
-
-
-
-
+Vue.use(Vuex);
 
 
 
@@ -23,8 +14,7 @@ var app = new Vue({
     el: '#app'
     ,
     data: {
-        questions:       [],
-        bus:             bus
+        questions:       []
     }
     ,
     mounted: function() {
@@ -40,6 +30,9 @@ var app = new Vue({
     store:        store
 
 })
+
+
+
 
 request(
             "/graphql"
@@ -137,14 +130,6 @@ const client = new ApolloClient({
   }
 })
 */
-
-bus.$on('getQuestions', (id) => {
-    app.getQuestions(id)
-    window.history.pushState("object or string", "Title", "/course_ids/" + id);
-})
-bus.$on('setAppMode', (id) => {
-    app.mode=id
-})
 
 
 /*
