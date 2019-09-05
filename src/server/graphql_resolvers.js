@@ -77,7 +77,7 @@ module.exports = {
         //
         getTests: (obj, args, context, info) => {
             return new Promise((resolve, reject) => {
-                dbb.query("select id,name, description,rating from learno_tests;", [], function (err, result) {
+                dbb.query("select id,name, description,rating from learno_tests limit 10;", [], function (err, result) {
                   if (err) {
                       console.log({failed: '' + err});
                       reject(err)
