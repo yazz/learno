@@ -26,6 +26,11 @@ export const store = new Vuex.Store(
         mutations: {
             setMode(state, newMode) {
                 state.mode = newMode
+                if (newMode == "home") {
+                    window.history.pushState("object or string", "Title", "/");
+                } else if (newMode == "courses") {
+                    window.history.pushState("object or string", "Title", "/");
+                }
             }
             ,
             setTopCourses(state, newMode) {
