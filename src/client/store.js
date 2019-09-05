@@ -11,11 +11,11 @@ export const store = new Vuex.Store(
         state: {
             mode:           "home"
             ,
-            top_courses:   []
+            top_courses:    []
             ,
-            courses:   []
+            courses:        []
             ,
-            questions:   []
+            questions:      []
         }
         ,
 
