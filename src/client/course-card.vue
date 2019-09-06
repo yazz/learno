@@ -1,6 +1,9 @@
 <template>
-    <div class="card" style="margin-bottom: 40px;">
+    <div    class="card"
+            style="margin-bottom: 40px;">
+
       <header class="card-header">
+
           <p   class="card-header-title"
                v-on:click='$store.commit("setQuestions", table.id);$store.commit("setMode", "questions");'>
 
@@ -12,6 +15,7 @@
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>
           </a>
+
       </header>
 
 
@@ -25,6 +29,7 @@
           <a href="#" class="card-footer-item">Similar</a>
           <a href="#" class="card-footer-item">Continue</a>
       </footer>
+
     </div>
 </template>
 

@@ -65,10 +65,22 @@ export const store = new Vuex.Store(
                         result => {
                             //console.log(result)
                             //alert(JSON.stringify(result,null,2))
-                            state.top_courses =  result.getTopCourses
+                            state.top_courses = []
+                            for (var i=0; i<result.getTopCourses.length;i++) {
+                                var thisCourse = result.getTopCourses[i]
+                                if (!state.records.courses[thisCourse.id]) {
+                                    state.records.courses[thisCourse.id] = thisCourse
+                                }
+                                state.top_courses.push({id: result.getTopCourses[i].id})
+                            }
                         }
                     );
             }
+
+
+
+
+
             ,
             setTests(state, newMode) {
                 request(
@@ -87,7 +99,19 @@ export const store = new Vuex.Store(
                         result => {
                             //console.log(result)
                             //alert(JSON.stringify(result,null,2))
-                            state.courses = result.getTests
+                            state.courses = []
+                            for (var i=0; i<result.getTests.length;i++) {
+                                var thisCourse = result.getTests[i]
+                                if (!state.records.courses[thisCourse.id]) {
+                                    state.records.courses[thisCourse.id] = thisCourse
+                                }
+                                state.courses.push({id: result.getTests[i].id})
+                            }
+                            //state.courses = result.getTests
+
+
+
+
                         }
                     );
             }

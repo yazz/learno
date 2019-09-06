@@ -27,7 +27,7 @@
                              v-for='table in $store.getters.courses'>
 
 
-                              <course-card   v-bind:table="table"
+                              <course-card   v-bind:table="$store.getters.records.courses[table.id]"
                                                 v-bind:bus='bus'>
                               </course-card>
                       </div>
@@ -63,7 +63,7 @@
                               <div      v-if='$store.getters.mode == "home"'
                                         v-for='table in $store.getters.topCourses'>
 
-                                      <course-card v-bind:table="table"></course-card>
+                                      <course-card v-bind:table="$store.getters.records.courses[table.id]"></course-card>
                               </div>
 
                       </div>
