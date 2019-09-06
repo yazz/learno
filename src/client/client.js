@@ -14,10 +14,6 @@ window.store = store
 var app = new Vue({
     el: '#app'
     ,
-    data: {
-        questions:       []
-    }
-    ,
     mounted: function() {
     }
     ,
