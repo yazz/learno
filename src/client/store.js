@@ -71,7 +71,25 @@ export const store = new Vuex.Store(
             }
             ,
             setTests(state, newMode) {
-                state.courses = newMode
+                request(
+                            "/graphql"
+                            ,
+                            `query {
+                                getTests {
+                                    id
+                                    name
+                                    description
+                                }
+                            }
+                            `
+                    )
+                .then(
+                        result => {
+                            //console.log(result)
+                            //alert(JSON.stringify(result,null,2))
+                            state.courses = result.getTests
+                        }
+                    );
             }
             ,
             setQuestions(state, newMode) {

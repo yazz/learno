@@ -31,29 +31,6 @@ var app = new Vue({
 
 
 
-            store.commit("setTopCourses")
+store.commit("setTopCourses")
 
-
-
-
-
-
-    request(
-                "/graphql"
-                ,
-                `query {
-                    getTests {
-                        id
-                        name
-                        description
-                    }
-                }
-                `
-        )
-    .then(
-            result => {
-                //console.log(result)
-                //alert(JSON.stringify(result,null,2))
-                store.commit("setTests", result.getTests)
-            }
-        );
+store.commit("setTests")
