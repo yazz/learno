@@ -27,8 +27,7 @@
                              v-for='table in $store.getters.courses'>
 
 
-                              <course-card   v-bind:table="$store.getters.records.courses[table.id]"
-                                                v-bind:bus='bus'>
+                              <course-card   v-bind:table="$store.getters.records.courses[table.id]">
                               </course-card>
                       </div>
 
@@ -87,14 +86,7 @@ import buttonCounter from "./course-card.vue";
 
 module.exports =
     {
-        props: ["top_courses","courses","bus"]
-        ,
-        data: function() {
-            return {
-                message:    'Learno',
-                questions:  []
-            }
-        }
+        props: []
         ,
         mounted: function() {
         }
