@@ -36,21 +36,21 @@
 
                     <div  v-if='$store.getters.mode == "questions"'>
                       <div  v-if='$store.getters.mode == "questions"'
-                            v-for='questionRecord in $store.getters.questions'>
+                            v-for='question in $store.getters.questions'>
 
-                            <div v-html="questionRecord.question"></div>
+                            <div v-html="$store.getters.records.questions[question.id].question"></div>
                             *
-                            <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_1"></div>
-                            <div style="margin-left: 40px;" v-html="questionRecord.text_answer_1"></div>
+                            <div style="margin-left: 20px;" v-html="$store.getters.records.questions[question.id].multiple_answer_1"></div>
+                            <div style="margin-left: 40px;" v-html="$store.getters.records.questions[question.id].text_answer_1"></div>
                             *
-                            <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_2"></div>
-                            <div style="margin-left: 40px;" v-html="questionRecord.text_answer_2"></div>
+                            <div style="margin-left: 20px;" v-html="$store.getters.records.questions[question.id].multiple_answer_2"></div>
+                            <div style="margin-left: 40px;" v-html="$store.getters.records.questions[question.id].text_answer_2"></div>
                             *
-                            <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_3"></div>
-                            <div style="margin-left: 40px;" v-html="questionRecord.text_answer_3"></div>
+                            <div style="margin-left: 20px;" v-html="$store.getters.records.questions[question.id].multiple_answer_3"></div>
+                            <div style="margin-left: 40px;" v-html="$store.getters.records.questions[question.id].text_answer_3"></div>
                             *
-                            <div style="margin-left: 20px;" v-html="questionRecord.multiple_answer_4"></div>
-                            <div style="margin-left: 40px;" v-html="questionRecord.text_answer_4"></div>
+                            <div style="margin-left: 20px;" v-html="$store.getters.records.questions[question.id].multiple_answer_4"></div>
+                            <div style="margin-left: 40px;" v-html="$store.getters.records.questions[question.id].text_answer_4"></div>
 
                         </div>
                     </div>

@@ -16,6 +16,16 @@ export const store = new Vuex.Store(
             courses:        []
             ,
             questions:      []
+            ,
+            records: {
+                questions: {
+
+                }
+                ,
+                courses: {
+
+                }
+            }
         }
         ,
 
@@ -68,7 +78,14 @@ export const store = new Vuex.Store(
                             window.history.pushState("object or string", "Title", "/course_ids/" + newMode);
                             //console.log(result)
                             //alert(JSON.stringify(result,null,2))
-                            state.questions= result.getQuestions
+                            state.questions = []
+                            for (var i=0; i<result.getQuestions.length;i++) {
+                                var thisQuestion = result.getQuestions[i]
+                                if (!state.records.questions[thisQuestion.id]) {
+                                    state.records.questions[thisQuestion.id] = thisQuestion
+                                }
+                                state.questions.push({id: result.getQuestions[i].id})
+                            }
                         }
                     );
             }
@@ -83,7 +100,8 @@ export const store = new Vuex.Store(
             mode: state => state.mode,
             topCourses: state => state.top_courses,
             courses: state => state.courses,
-            questions: state => state.questions
+            questions: state => state.questions,
+            records: state => state.records
         }
     }
 )
