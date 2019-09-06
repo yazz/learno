@@ -43,8 +43,31 @@ export const store = new Vuex.Store(
                 }
             }
             ,
-            setTopCourses(state, newMode) {
-                state.top_courses = newMode
+
+
+
+
+
+            setTopCourses(state) {
+                request(
+                            "/graphql"
+                            ,
+                            `query {
+                                getTopCourses {
+                                    id
+                                    name
+                                    description
+                                }
+                            }
+                            `
+                    )
+                .then(
+                        result => {
+                            //console.log(result)
+                            //alert(JSON.stringify(result,null,2))
+                            state.top_courses =  result.getTopCourses
+                        }
+                    );
             }
             ,
             setTests(state, newMode) {
