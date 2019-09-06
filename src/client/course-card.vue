@@ -5,7 +5,7 @@
       <header class="card-header">
 
           <p   class="card-header-title"
-               v-on:click='$store.commit("setQuestions", table.id);$store.commit("setMode", "questions");'>
+               v-on:click='$store.commit("setQuestions", table.id);'>
 
               {{table.name}} - Rating: {{table.rating}}
           </p>

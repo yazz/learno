@@ -151,6 +151,7 @@ export const store = new Vuex.Store(
                                 }
                                 state.questions.push({id: result.getQuestions[i].id})
                             }
+                            this.commit("setMode", "questions");
                         }
                     );
             }
