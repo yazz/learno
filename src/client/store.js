@@ -26,6 +26,8 @@ export const store = new Vuex.Store(
 
                 }
             }
+            ,
+            data_to_load: []
         }
         ,
 
@@ -69,6 +71,7 @@ export const store = new Vuex.Store(
                             for (var i=0; i<result.getTopCourses.length;i++) {
                                 var thisCourse = result.getTopCourses[i]
                                 if (!state.records.courses[thisCourse.id]) {
+                                    state.data_to_load.push({type: "course", id: thisCourse.id})
                                     state.records.courses[thisCourse.id] = thisCourse
                                 }
                                 state.top_courses.push({id: result.getTopCourses[i].id})

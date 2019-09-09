@@ -5,6 +5,7 @@
       <header class="card-header">
 
           <p   class="card-header-title"
+                v-if='table'
                v-on:click='$store.commit("setQuestions", table.id);'>
 
               {{table.name}} - Rating: {{table.rating}}
@@ -19,7 +20,8 @@
       </header>
 
 
-      <div class="card-content">
+      <div  class="card-content"
+            v-if='table'>
           <div class="content" v-html="table.description">
           </div>
       </div>
