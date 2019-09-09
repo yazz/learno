@@ -31,6 +31,6 @@ var app = new Vue({
 
 
 
-store.commit("setTopCourses")
+store.dispatch("actionSetTopCourses")
 
-store.commit("setTests")
+//store.commit("setTests")
