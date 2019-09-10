@@ -76,38 +76,41 @@ export const store = new Vuex.Store(
                                 }
                                 state.top_courses.push({id: result.getTopCourses[i].id})
                             }
-                            alert(state.data_to_load.length)
+                            console.log("Store::setTopCourses::state.data_to_load.length: " + state.data_to_load.length)
 
                         }
                     );
             }
             ,
             loadUnloadedData(state) {
-                alert(state.data_to_load.length)
+                //alert(state.data_to_load.length)
                 for (var i=0; i<state.data_to_load.length;i++) {
                     var thisRecord = state.data_to_load[i]
                     //alert(thisRecord.id)
                     if (!state.records.courses[thisRecord.id]) {
-                        request(
-                                    "/graphql"
-                                    ,
-                                    `query {
-                                        getTest(id: ${thisRecord.id}) {
-                                            id
-                                            name
-                                            description
+                        (async function (thisRecordId) {
+                            request(
+                                        "/graphql"
+                                        ,
+                                        `query {
+                                            getTest(id: ${thisRecordId}) {
+                                                id
+                                                name
+                                                description
+                                            }
                                         }
-                                    }
-                                    `
-                            )
-                        .then(
-                                result => {
-                                    //alert(thisRecord.id)
-                                    //debugger
-                                    //alert(JSON.stringify(result.getTest,null,2))
-                                    state.records.courses[thisRecord.id] = result.getTest
-                                    //alert(JSON.stringify( state.records.courses[thisRecord.id],null,2))
-                                })
+                                        `
+                                )
+                            .then(
+                                    result => {
+                                        console.log("store::loadUnloadedData::"+ thisRecordId)
+                                        //debugger
+                                        //alert(JSON.stringify(result.getTest,null,2))
+                                        state.records.courses[thisRecordId] = result.getTest
+                                        //alert(JSON.stringify( state.records.courses[thisRecord.id],null,2))
+                                    })
+                        })(thisRecord.id)
+
 
                     }
 
@@ -210,7 +213,11 @@ export const store = new Vuex.Store(
         actions: {
             actionSetTopCourses: ({commit}) => {
               commit('setTopCourses')
-              commit('loadUnloadedData')
+              setTimeout(
+                    () => commit('loadUnloadedData'),
+                    1000
+              )
+
             }
         }
     }
