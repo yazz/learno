@@ -106,7 +106,10 @@ export const store = new Vuex.Store(
                                         console.log("store::loadUnloadedData::"+ thisRecordId)
                                         //debugger
                                         //alert(JSON.stringify(result.getTest,null,2))
-                                        state.records.courses[thisRecordId] = result.getTest
+                                        //state.records.courses[thisRecordId] = result.getTest
+                                        var newRecords = JSON.parse(JSON.stringify(state.records))
+                                        newRecords.courses[thisRecordId] = result.getTest
+                                        state.records = newRecords
                                         //alert(JSON.stringify( state.records.courses[thisRecord.id],null,2))
                                     })
                         })(thisRecord.id)
