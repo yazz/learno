@@ -9,6 +9,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store(
     {
         state: {
+            refresh:         0
+            ,
             mode:           "home"
             ,
             top_courses:    []
@@ -51,6 +53,7 @@ export const store = new Vuex.Store(
 
 
             setTopCourses(state) {
+                var me = this
                 request(
                             "/graphql"
                             ,
@@ -77,13 +80,17 @@ export const store = new Vuex.Store(
                                 state.top_courses.push({id: result.getTopCourses[i].id})
                             }
                             console.log("Store::setTopCourses::state.data_to_load.length: " + state.data_to_load.length)
+                            me.commit('loadUnloadedData')
 
                         }
+
                     );
             }
             ,
             loadUnloadedData(state) {
+                var me = this
                 //alert(state.data_to_load.length)
+                console.log("store::loadUnloadedData")
                 for (var i=0; i<state.data_to_load.length;i++) {
                     var thisRecord = state.data_to_load[i]
                     //alert(thisRecord.id)
@@ -107,10 +114,13 @@ export const store = new Vuex.Store(
                                         //debugger
                                         //alert(JSON.stringify(result.getTest,null,2))
                                         //state.records.courses[thisRecordId] = result.getTest
-                                        var newRecords = JSON.parse(JSON.stringify(state.records))
-                                        newRecords.courses[thisRecordId] = result.getTest
-                                        state.records = newRecords
+                                        //var newRecords = JSON.parse(JSON.stringify(state.records))
+                                        //newRecords.courses[thisRecordId] = result.getTest
+                                        //state.records = newRecords
+                                        state.records.courses[thisRecordId] = result.getTest
                                         //alert(JSON.stringify( state.records.courses[thisRecord.id],null,2))
+                                        me.commit('refresh')
+
                                     })
                         })(thisRecord.id)
 
@@ -119,8 +129,18 @@ export const store = new Vuex.Store(
 
                 }
 
+
             }
 
+
+
+
+
+            ,
+            refresh(state, newMode) {
+                state.refresh ++
+                console.log("Refresh: " + state.refresh)
+            }
 
 
 
@@ -207,6 +227,7 @@ export const store = new Vuex.Store(
 
 
         getters: {
+            refresh: state => state.refresh,
             mode: state => state.mode,
             topCourses: state => state.top_courses,
             courses: state => state.courses,
@@ -214,14 +235,6 @@ export const store = new Vuex.Store(
             records: state => state.records
         },
         actions: {
-            actionSetTopCourses: ({commit}) => {
-              commit('setTopCourses')
-              setTimeout(
-                    () => commit('loadUnloadedData'),
-                    1000
-              )
-
-            }
         }
     }
 )

@@ -31,10 +31,6 @@ var app = new Vue({
 
 
 
-store.dispatch("actionSetTopCourses").then(
-    () => store.commit("loadUnloadedData")
-
-)
-
+store.commit("setTopCourses")
 
 //store.commit("setTests")

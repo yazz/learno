@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-bind:refresh="$store.getters.refresh">
       <div class="modal.open">
           <div class="modal__header">
               <div class="container">
@@ -57,7 +57,9 @@
 
 
                       <div    v-if='$store.getters.mode == "home"'
+                              v-bind:refresh="$store.getters.refresh"
                               id="components-demo">
+
 
                               <div      v-if='$store.getters.mode == "home"'
                                         v-for='table in $store.getters.topCourses'>
