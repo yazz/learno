@@ -1,6 +1,7 @@
 import   Vue                from "vue";
 import   Vuex               from 'vuex';
 import { request }          from "graphql-request";
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex);
 
@@ -8,6 +9,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store(
     {
+        plugins: [createPersistedState()]
+        ,
         state: {
             refresh:         0
             ,
