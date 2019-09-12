@@ -5,11 +5,23 @@ import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex);
 
+function lsTest(){
+    var test = 'test';
+    try {
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        console.log("Browser local storage available")
+        return true;
+    } catch(e) {
+        console.log("No browser local storage")
+        return false;
+    }
+}
 
 
 export const store = new Vuex.Store(
     {
-        plugins: [createPersistedState()]
+        plugins: lsTest()?[createPersistedState()]:null
         ,
         state: {
             refresh:         0
