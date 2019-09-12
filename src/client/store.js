@@ -21,7 +21,7 @@ function lsTest(){
 
 export const store = new Vuex.Store(
     {
-        plugins: lsTest()?[createPersistedState()]:null
+        plugins: lsTest()?[createPersistedState()]:[]
         ,
         state: {
             refresh:         0
