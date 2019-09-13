@@ -75,8 +75,6 @@ export const store = new Vuex.Store(
                             `query {
                                 getTopCourses {
                                     id
-                                    name
-                                    description
                                 }
                             }
                             `
@@ -94,7 +92,6 @@ export const store = new Vuex.Store(
                                 }
                                 state.top_courses.push({id: result.getTopCourses[i].id})
                             }
-                            console.log("Store::setTopCourses::state.data_to_load.length: " + state.data_to_load.length)
                             me.commit('loadUnloadedData')
 
                         }
@@ -104,8 +101,6 @@ export const store = new Vuex.Store(
             ,
             loadUnloadedData(state) {
                 var me = this
-                //alert(state.data_to_load.length)
-                console.log("store::loadUnloadedData")
                 for (var i=0; i<state.data_to_load.length;i++) {
                     var thisRecord = state.data_to_load[i]
                     //alert(thisRecord.id)
@@ -162,14 +157,13 @@ export const store = new Vuex.Store(
 
             ,
             setTests(state, newMode) {
+                var me = this
                 request(
                             "/graphql"
                             ,
                             `query {
                                 getTests {
                                     id
-                                    name
-                                    description
                                 }
                             }
                             `
@@ -178,18 +172,16 @@ export const store = new Vuex.Store(
                         result => {
                             //console.log(result)
                             //alert(JSON.stringify(result,null,2))
-                            state.courses = []
+                            state.top_courses = []
                             for (var i=0; i<result.getTests.length;i++) {
                                 var thisCourse = result.getTests[i]
                                 if (!state.records.courses[thisCourse.id]) {
-                                    state.records.courses[thisCourse.id] = thisCourse
+                                    state.data_to_load.push({type: "course", id: thisCourse.id})
+                                    //state.records.courses[thisCourse.id] = thisCourse
                                 }
                                 state.courses.push({id: result.getTests[i].id})
                             }
-                            //state.courses = result.getTests
-
-
-
+                            me.commit('loadUnloadedData')
 
                         }
                     );

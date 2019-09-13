@@ -33,4 +33,4 @@ var app = new Vue({
 
 store.commit("setTopCourses")
 
-//store.commit("setTests")
+store.commit("setTests")
