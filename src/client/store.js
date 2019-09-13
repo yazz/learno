@@ -156,7 +156,7 @@ export const store = new Vuex.Store(
 
 
             ,
-            setTests(state, newMode) {
+            setTests(state) {
                 var me = this
                 request(
                             "/graphql"
@@ -172,7 +172,7 @@ export const store = new Vuex.Store(
                         result => {
                             //console.log(result)
                             //alert(JSON.stringify(result,null,2))
-                            state.top_courses = []
+                            state.courses = []
                             for (var i=0; i<result.getTests.length;i++) {
                                 var thisCourse = result.getTests[i]
                                 if (!state.records.courses[thisCourse.id]) {
