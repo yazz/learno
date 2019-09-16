@@ -163,6 +163,7 @@ export const store = new Vuex.Store(
                                     )
                                 .then(
                                         result => {
+                                            debugger
                                             console.log("store::loadUnloadedData::"+ thisRecordId)
                                             //debugger
                                             //alert(JSON.stringify(result.getTest,null,2))
@@ -182,6 +183,7 @@ export const store = new Vuex.Store(
                     }
 
                 }
+                state.data_to_load=[]
 
 
             }
@@ -276,6 +278,7 @@ export const store = new Vuex.Store(
                                 state.questions.push({id: result.getQuestions[i].id})
                             }
                             this.commit("setMode", "questions");
+                            this.commit('loadUnloadedData')
                         }
                     );
             }
