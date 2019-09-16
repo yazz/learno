@@ -104,40 +104,43 @@ export const store = new Vuex.Store(
                 for (var i=0; i<state.data_to_load.length;i++) {
                     var thisRecord = state.data_to_load[i]
                     //alert(thisRecord.id)
-                    if (!state.records.courses[thisRecord.id]) {
-                        (async function (thisRecordId) {
-                            request(
-                                        "/graphql"
-                                        ,
-                                        `query {
-                                            getTest(id: ${thisRecordId}) {
-                                                id
-                                                name
-                                                description
+                    if (thisRecord.type == "course") {
+
+                        if (!state.records.courses[thisRecord.id]) {
+                            (async function (thisRecordId) {
+                                request(
+                                            "/graphql"
+                                            ,
+                                            `query {
+                                                getTest(id: ${thisRecordId}) {
+                                                    id
+                                                    name
+                                                    description
+                                                }
                                             }
-                                        }
-                                        `
-                                )
-                            .then(
-                                    result => {
-                                        console.log("store::loadUnloadedData::"+ thisRecordId)
-                                        //debugger
-                                        //alert(JSON.stringify(result.getTest,null,2))
-                                        //state.records.courses[thisRecordId] = result.getTest
-                                        //var newRecords = JSON.parse(JSON.stringify(state.records))
-                                        //newRecords.courses[thisRecordId] = result.getTest
-                                        //state.records = newRecords
-                                        state.records.courses[thisRecordId] = result.getTest
-                                        //alert(JSON.stringify( state.records.courses[thisRecord.id],null,2))
-                                        me.commit('refresh')
+                                            `
+                                    )
+                                .then(
+                                        result => {
+                                            console.log("store::loadUnloadedData::"+ thisRecordId)
+                                            //debugger
+                                            //alert(JSON.stringify(result.getTest,null,2))
+                                            //state.records.courses[thisRecordId] = result.getTest
+                                            //var newRecords = JSON.parse(JSON.stringify(state.records))
+                                            //newRecords.courses[thisRecordId] = result.getTest
+                                            //state.records = newRecords
+                                            state.records.courses[thisRecordId] = result.getTest
+                                            //alert(JSON.stringify( state.records.courses[thisRecord.id],null,2))
+                                            me.commit('refresh')
 
-                                    })
-                        })(thisRecord.id)
+                                        })
+                            })(thisRecord.id)
 
 
+                        }
                     }
 
-                }
+                } 
 
 
             }
@@ -226,6 +229,7 @@ export const store = new Vuex.Store(
                             for (var i=0; i<result.getQuestions.length;i++) {
                                 var thisQuestion = result.getQuestions[i]
                                 if (!state.records.questions[thisQuestion.id]) {
+                                    state.data_to_load.push({type: "question", id: thisQuestion.id})
                                     state.records.questions[thisQuestion.id] = thisQuestion
                                 }
                                 state.questions.push({id: result.getQuestions[i].id})
