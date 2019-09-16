@@ -163,7 +163,7 @@ export const store = new Vuex.Store(
                                     )
                                 .then(
                                         result => {
-                                            debugger
+
                                             console.log("store::loadUnloadedData::"+ thisRecordId)
                                             //debugger
                                             //alert(JSON.stringify(result.getTest,null,2))
@@ -249,16 +249,6 @@ export const store = new Vuex.Store(
                             `query {
                                 getQuestions(courseId: ${newMode}) {
                                     id
-                                    question
-                                    category
-                                    multiple_answer_1
-                                    text_answer_1
-                                    multiple_answer_2
-                                    text_answer_2
-                                    multiple_answer_3
-                                    text_answer_3
-                                    multiple_answer_4
-                                    text_answer_4
                                 }
                             }
                             `
