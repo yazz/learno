@@ -11,7 +11,7 @@ function lsTest(){
         localStorage.setItem(test, test);
         localStorage.removeItem(test);
         console.log("Browser local storage available")
-        return true;
+        return false;
     } catch(e) {
         console.log("No browser local storage")
         return false;
@@ -187,6 +187,14 @@ export const store = new Vuex.Store(
                     );
             }
             ,
+
+
+
+
+
+
+
+
             setQuestions(state, newMode) {
 
                 request(
@@ -233,13 +241,16 @@ export const store = new Vuex.Store(
 
 
 
+
+
+
         getters: {
-            refresh: state => state.refresh,
-            mode: state => state.mode,
+            refresh:    state => state.refresh,
+            mode:       state => state.mode,
             topCourses: state => state.top_courses,
-            courses: state => state.courses,
-            questions: state => state.questions,
-            records: state => state.records
+            courses:    state => state.courses,
+            questions:  state => state.questions,
+            records:    state => state.records
         },
         actions: {
         }
