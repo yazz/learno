@@ -53,6 +53,8 @@ module.exports = gql`
 
     getTest(id: Int):  Test
 
+    getQuestion(id: Int):  Question
+
     getUsers:  [User]
 
     getTopCourses:  [Test]
