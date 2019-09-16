@@ -138,9 +138,50 @@ export const store = new Vuex.Store(
 
 
                         }
+                    } else if (thisRecord.type == "question") {
+
+                        if (!state.records.questions[thisRecord.id]) {
+                            (async function (thisRecordId) {
+                                request(
+                                            "/graphql"
+                                            ,
+                                            `query {
+                                                getQuestion(id: ${thisRecordId}) {
+                                                    id
+                                                    question
+                                                    category
+                                                    multiple_answer_1
+                                                    text_answer_1
+                                                    multiple_answer_2
+                                                    text_answer_2
+                                                    multiple_answer_3
+                                                    text_answer_3
+                                                    multiple_answer_4
+                                                    text_answer_4                                                }
+                                            }
+                                            `
+                                    )
+                                .then(
+                                        result => {
+                                            console.log("store::loadUnloadedData::"+ thisRecordId)
+                                            //debugger
+                                            //alert(JSON.stringify(result.getTest,null,2))
+                                            //state.records.courses[thisRecordId] = result.getTest
+                                            //var newRecords = JSON.parse(JSON.stringify(state.records))
+                                            //newRecords.courses[thisRecordId] = result.getTest
+                                            //state.records = newRecords
+                                            state.records.questions[thisRecordId] = result.getQuestion
+                                            //alert(JSON.stringify( state.records.courses[thisRecord.id],null,2))
+                                            me.commit('refresh')
+
+                                        })
+                            })(thisRecord.id)
+
+
+                        }
                     }
 
-                } 
+                }
 
 
             }
