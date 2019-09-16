@@ -271,7 +271,7 @@ export const store = new Vuex.Store(
                                 var thisQuestion = result.getQuestions[i]
                                 if (!state.records.questions[thisQuestion.id]) {
                                     state.data_to_load.push({type: "question", id: thisQuestion.id})
-                                    state.records.questions[thisQuestion.id] = thisQuestion
+                                    //state.records.questions[thisQuestion.id] = thisQuestion
                                 }
                                 state.questions.push({id: result.getQuestions[i].id})
                             }
