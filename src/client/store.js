@@ -101,7 +101,8 @@ export const store = new Vuex.Store(
             ,
             loadUnloadedData(state) {
                 var me = this
-                for (var i=0; i<state.data_to_load.length;i++) {
+                for (var i = 0  ;  i < state.data_to_load.length  ;  i++) {
+
                     var thisRecord = state.data_to_load[i]
                     //alert(thisRecord.id)
                     if (thisRecord.type == "course") {
@@ -164,7 +165,8 @@ export const store = new Vuex.Store(
                                 .then(
                                         result => {
 
-                                            console.log("store::loadUnloadedData::"+ thisRecordId)
+
+                                            console.log("store::loadQuestion::"+ JSON.stringify(result,null,2))
                                             //debugger
                                             //alert(JSON.stringify(result.getTest,null,2))
                                             //state.records.courses[thisRecordId] = result.getTest
