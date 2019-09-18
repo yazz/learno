@@ -1,4 +1,5 @@
 import  "@babel/polyfill";
+import  'bulma';
 import { request }          from "graphql-request";
 import   Vue                from "vue";
 import   MainWindow         from "./main-vue-window.vue";
