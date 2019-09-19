@@ -2,18 +2,24 @@
   <div v-bind:refresh="$store.getters.refresh">
       <div class="modal.open">
           <div class="modal__header">
-              <div class="container">
-                  <div>Learno</div>
-
-                  <div v-bind:class='"button is-medium " + (($store.getters.mode == "home")?"is-dark":"is-light")'
-                       v-on:click='$store.commit("setMode", "home");'>Home</div>
-
-                  <div    v-on:click='$store.commit("setMode", "courses");'
-                          v-bind:class='"button is-medium " + (($store.getters.mode == "courses")?"is-dark":"is-light")'>Courses</div>
-
-                  <div    v-on:click='$store.commit("setMode", "questions");'
-                          v-bind:class='"button is-medium " + (($store.getters.mode == "questions")?"is-dark":"is-light")'>Questions</div>
-              </div>
+              <div>Learno</div>
+              <div class="btn-group" role="group" aria-label="Basic example">
+                  <button type="button"
+                          v-bind:class='"btn " + (($store.getters.mode == "home")?"btn-primary":"btn-secondary")'
+                          v-on:click='$store.commit("setMode", "home");'>
+                          Home
+                  </button>
+                  <button type="button"
+                          v-bind:class='"btn " + (($store.getters.mode == "courses")?"btn-primary":"btn-secondary")'
+                          v-on:click='$store.commit("setMode", "courses");'>
+                          Courses
+                  </button>
+                  <button type="button"
+                          v-bind:class='"btn " + (($store.getters.mode == "questions")?"btn-primary":"btn-secondary")'
+                          v-on:click='$store.commit("setMode", "questions");'>
+                          Questions
+                  </button>
+                </div>
           </div>
 
           <div class="modal__content is-momentumScrollable" style="overflow-x: hidden;">

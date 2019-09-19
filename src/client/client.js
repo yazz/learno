@@ -1,6 +1,9 @@
 import  "@babel/polyfill";
-import  'bulma';
-import  'bootstrap';
+import   $ from "jquery";
+import   popper from "popper.js";
+import   bootstrap from 'bootstrap';
+import  'bootstrap/dist/css/bootstrap.css'
+import  '@fortawesome/fontawesome-free/css/all.css'
 import { request }          from "graphql-request";
 import   Vue                from "vue";
 import   MainWindow         from "./main-vue-window.vue";
