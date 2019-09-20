@@ -2,35 +2,17 @@
     <div    class="card"
             style="margin-bottom: 40px;">
 
-      <header class="card-header">
 
-          <p   class="card-header-title"
-                v-if='table'
-               v-on:click='$store.commit("setQuestions", table.id);'>
-
-              {{table.name}} - Rating: {{table.rating}}
-          </p>
-
-          <a href="#" class="card-header-icon" aria-   label="more options">
-              <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
-          </a>
-
-      </header>
-
-
-      <div  class="card-content"
-            v-if='table'>
-          <div class="content" v-html="table.description">
-          </div>
+      <div class="card-body">
+        <h5 class="card-title" v-if='table'
+       v-on:click='$store.commit("setQuestions", table.id);'>{{table.name}} - Rating: {{table.rating}}</h5>
+        <p class="card-text" v-html="table.description"></p>
+        <a href="#" class="btn btn-primary"
+        v-on:click='$store.commit("setQuestions", table.id);'>Take course</a>
       </div>
 
-      <footer class="card-footer">
-          <a href="#" class="card-footer-item">Start</a>
-          <a href="#" class="card-footer-item">Similar</a>
-          <a href="#" class="card-footer-item">Continue</a>
-      </footer>
+
+
 
     </div>
 </template>
