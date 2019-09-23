@@ -27,7 +27,7 @@
 
 
               <section  class="section">
-                  <div class="container">
+                  <div class="container" style="margin-left:0px;">
 
                       <div   v-if='$store.getters.mode == "courses"'
                              v-for='table in $store.getters.courses'>
