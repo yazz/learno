@@ -241,6 +241,16 @@ export const store = new Vuex.Store(
 
 
 
+            nextQuestion(state) {
+                state.current_question_index ++
+            }
+            ,
+
+            lastQuestion(state) {
+                state.current_question_index --
+            }
+            ,
+
 
 
 

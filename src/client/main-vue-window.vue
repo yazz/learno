@@ -38,7 +38,7 @@
                       </div>
 
 
-
+                      Question {{($store.getters.currentQuestionIndex + 1)}}
                     <div  v-if='$store.getters.mode == "questions"'>
                       <div  v-if='$store.getters.mode == "questions"'>
 
@@ -59,6 +59,19 @@
                                 <div style="margin-left: 40px;" v-html="$store.getters.records.questions[$store.getters.questions[$store.getters.currentQuestionIndex].id].text_answer_4"></div>
 
                             </div>
+
+                            <button type="button"
+                                    v-bind:class='"btn " + (($store.getters.mode == "home")?"btn-primary":"btn-secondary")'
+                                    v-on:click='$store.commit("lastQuestion");'>
+                                    Last
+                            </button>
+                            <button type="button"
+                                    v-bind:class='"btn " + (($store.getters.mode == "courses")?"btn-primary":"btn-secondary")'
+                                    v-on:click='$store.commit("nextQuestion");'>
+                                    Next
+                            </button>
+
+
                         </div>
                     </div>
 
