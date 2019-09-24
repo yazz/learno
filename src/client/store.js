@@ -28,6 +28,8 @@ export const store = new Vuex.Store(
             ,
             mode:           "home"
             ,
+            current_question_index:         0
+            ,
             top_courses:    []
             ,
             courses:        []
@@ -290,7 +292,8 @@ export const store = new Vuex.Store(
             topCourses: state => state.top_courses,
             courses:    state => state.courses,
             questions:  state => state.questions,
-            records:    state => state.records
+            records:    state => state.records,
+            currentQuestionIndex:    state => state.current_question_index
         },
         actions: {
         }
