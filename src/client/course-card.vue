@@ -4,11 +4,15 @@
 
 
       <div class="card-body">
-        <h5 class="card-title" v-if='table'
-       v-on:click='$store.commit("setQuestions", table.id);'>{{table.name}} - Rating: {{table.rating}}</h5>
-        <p class="card-text" v-html="table.description"></p>
-        <a href="#" class="btn btn-primary"
-        v-on:click='$store.commit("setQuestions", table.id);'>Take course</a>
+
+        <h5 class="card-title"
+            v-if='course'
+            v-on:click='$store.commit("setQuestions", course.id);'>{{course.name}} - Rating: {{course.rating}}</h5>
+
+        <p class="card-text" v-html="course.description"></p>
+
+        <button  class="btn btn-primary"
+                 v-on:click='$store.commit("setQuestions", course.id);'>Take course</button>
       </div>
 
 
@@ -24,7 +28,7 @@ import Vue from "vue";
 
 module.exports =
     {
-        props:["table"]
+        props:["course"]
         ,
         data: function() {
             return {
