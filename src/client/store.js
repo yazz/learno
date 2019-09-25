@@ -30,6 +30,8 @@ export const store = new Vuex.Store(
             ,
             current_question_index:         0
             ,
+            current_course_index:         null
+            ,
             top_courses:    []
             ,
             courses:        []
