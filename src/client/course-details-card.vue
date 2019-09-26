@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-bind:refresh="$store.getters.refresh">
         <div v-if='$store.getters.records.questions[$store.getters.questions[$store.getters.currentQuestionIndex].id]'>
 
             Question {{($store.getters.currentQuestionIndex + 1)}}
@@ -40,7 +40,7 @@ import Vue from "vue";
 
 module.exports =
     {
-        props:["table"]
+        props:["table","refresh"]
         ,
         data: function() {
             return {

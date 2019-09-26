@@ -39,13 +39,11 @@
 
 
                     <div  v-if='$store.getters.mode == "questions"'>
-                      <div  v-if='$store.getters.mode == "questions"'>
 
-                          <course-details-card>
+                          <course-details-card  v-bind:refresh="$store.getters.refresh">
                           </course-details-card>
 
 
-                        </div>
                     </div>
 
 
