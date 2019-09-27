@@ -286,6 +286,7 @@ export const store = new Vuex.Store(
                             this.commit("setMode", "questions");
                             this.commit('loadUnloadedData')
                             this.commit('refresh')
+                            state.current_question_index = 0
                         }
                     );
             }
