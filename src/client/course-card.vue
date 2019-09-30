@@ -9,7 +9,9 @@
             v-if='course'
             v-on:click='$store.commit("setQuestions", course.id);'>{{course.name}} - Rating: {{course.rating}}</h5>
 
-        <p class="card-text" v-html="course.description"></p>
+        <p class="card-text"
+           v-if="course"
+           v-html="course.description"></p>
 
         <button  class="btn btn-primary"
                  v-on:click='$store.commit("setQuestions", course.id);'>Take course</button>
