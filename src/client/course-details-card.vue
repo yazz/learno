@@ -46,7 +46,7 @@ module.exports =
         ,
         data: function() {
             return {
-                count: 0
+                currentQuestion: {}
             }
         }
         ,
