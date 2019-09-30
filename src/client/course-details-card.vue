@@ -1,6 +1,7 @@
 <template>
     <div v-bind:refresh="$store.getters.refresh">
-        <div v-if='$store.getters.records.questions[$store.getters.questions[$store.getters.currentQuestionIndex].id]'>
+        <div v-if='Object.keys($store.getters.records.questions).length>0'>
+            <div v-if='$store.getters.records.questions[$store.getters.questions[$store.getters.currentQuestionIndex].id]'>
 
             Question {{($store.getters.currentQuestionIndex + 1)}}
 
@@ -31,6 +32,7 @@
                 Next
         </button>
     </div>
+</div>
 </template>
 
 
