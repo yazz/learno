@@ -1,45 +1,27 @@
-# Write your query or mutation here
-query q1{
-  getQuestions{
-    id
-    question
-    category
-  }
-}
-
-# Write your query or mutation here
-query q2{
-  getTests{
-    id
-    name
-    questions {
-      id
-      question
-    }
-  }
-}
-
-query q3{
-  getTest(id: 341) {
-    id
-    name
-    questions {
-      id
-      question
-    }
-  }
-}
-
-
-
-query q4{
-  getUsers {
-    id
-    user_name
-  }
-}
-
-
+learno_category_scores
+learno_changes
+learno_contributions
+learno_course_editors
+learno_course_positions
+learno_daily_course_stats
+learno_daily_user_stats
+learno_examinations
+learno_extra_points
+learno_keywords
+learno_link_question_keyword
+learno_messages
+learno_past_winners
+learno_question_stats
+learno_questions
+learno_score_results
+learno_teach_course_entry
+learno_tell_a_friend
+learno_tests
+learno_trust
+yazz_fixed_tyranslations
+yazz_lifecycle_properties
+yazz_login_details
+yazz_site_access_log
 
 
 

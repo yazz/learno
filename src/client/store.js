@@ -32,6 +32,14 @@ export const store = new Vuex.Store(
             ,
             current_course_index:         null
             ,
+            current_course_answers_chosen:  {
+
+            }
+            ,
+            current_course_answers_displayed:  {
+
+            }
+            ,
             top_courses:    []
             ,
             courses:        []
