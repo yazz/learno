@@ -1,3 +1,55 @@
+.----------------------------------------------------------------------
+|
+|  learno_tests
+|
+| This contains all the test names
+|
+.----------------------------------------------------------------------
+|
+|  ID - the unique ID
+|  This contains all the test names
+|  Also whether a test is public or private
+|  Also meta data
+|  TYPE -  TEST   - this is a test
+|          FOLDER - this is a category of tests
+|
+|
+|
+|
+|
+.----------------------------------------------------------------------
+
+
+
+.----------------------------------------------------------------------
+|
+|  learno_questions
+|
+|  This contains all the questions
+|
+|
+| Many questions are duplicated here for some reason. Why? eg: for exam 42 (JBoss)
+|
+.----------------------------------------------------------------------
+|
+| ID  - the unique ID
+| FK_EXAM_ID - the unique ID of the test that this question belongs to
+| QUESTION_ID - The order of the question in the test
+| CATEGORY - text string of which category this belongs to
+| multiple_answer_1 - The correct answer
+| multiple_answer_2 .. 5 - The wrong answers
+|
+| text_answer_1 - Why this is the correct answer
+| text_answer_2 .. 5 - Why these are the wrong answers
+|
+| OWNER_ID - user ID of the user that created this question
+|
+| PUBLISHED_ANSWER_ID_1 .. 5 - For each answer which order will they be displayed in
+| STATUS - null, REJECTED
+|
+| PUBLISH - Y/N
+.----------------------------------------------------------------------
+
 learno_category_scores
 learno_changes
 learno_contributions
@@ -12,11 +64,9 @@ learno_link_question_keyword
 learno_messages
 learno_past_winners
 learno_question_stats
-learno_questions
 learno_score_results
 learno_teach_course_entry
 learno_tell_a_friend
-learno_tests
 learno_trust
 yazz_fixed_tyranslations
 yazz_lifecycle_properties
