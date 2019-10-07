@@ -56,7 +56,7 @@ module.exports = {
             return new Promise((resolve, reject) => {
                 //return `Hello world ${args.name}`
                 console.log(123);
-                dbb.query("select id, question,multiple_answer_1,text_answer_1,multiple_answer_2,text_answer_2,multiple_answer_3,text_answer_3,multiple_answer_4,text_answer_4 from learno_questions where fk_exam_id = " + args.courseId, [], function (err, result) {
+                dbb.query("select id, question,multiple_answer_1,text_answer_1,multiple_answer_2,text_answer_2,multiple_answer_3,text_answer_3,multiple_answer_4,text_answer_4 from learno_questions where fk_exam_id = " + args.courseId + " order by question_id desc", [], function (err, result) {
                   if (err) {
                       console.log({failed: '' + err});
                       reject(err)
